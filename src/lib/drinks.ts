@@ -3,7 +3,7 @@ export interface Drink {
   name: string;
   price: number;
   description: string;
-  type: 'fruit-drink' | 'cocktail' | 'shake';
+  type: 'fruit-drink' | 'cocktail' | 'shake' | 'smoothie';
   longDescription?: string;
 }
 
@@ -36,7 +36,14 @@ export const shakes: Drink[] = [
   { id: 'shake-4', name: 'Mango Cream', price: 46.0, type: 'shake', description: 'Velvety mango puree meets premium vanilla cream.', longDescription: 'The ultimate tropical treat. A thick, lush blend of our signature mango puree and high-quality vanilla cream, creating a sunshine-colored shake that is as rich as it is refreshing.' },
 ];
 
-export const allDrinks = [...fruitDrinks, ...cocktails, ...shakes];
+export const smoothies: Drink[] = [
+  { id: 'smoothie-1', name: 'Green Oasis', price: 35.0, type: 'smoothie', description: 'Kale, spinach, green apple, and banana for a healthy boost.', longDescription: 'Revitalize your body with our Green Oasis. A nutrient-dense powerhouse featuring fresh kale and spinach, balanced with the sweetness of green apples and creamy bananas. Perfect for a morning kickstart or a post-workout recovery.' },
+  { id: 'smoothie-2', name: 'Purple Power', price: 38.0, type: 'smoothie', description: 'Acai, blueberries, and almond milk with a hint of honey.', longDescription: 'Unlock your inner energy. Purple Power blends premium acai berries with local blueberries and silky almond milk. A drizzle of organic honey adds just the right amount of natural sweetness to this antioxidant-rich smoothie.' },
+  { id: 'smoothie-3', name: 'Golden Glow', price: 36.0, type: 'smoothie', description: 'Turmeric, mango, pineapple, and coconut milk.', longDescription: 'Anti-inflammatory and absolutely delicious. Our Golden Glow combines the healing properties of turmeric with sun-soaked mangoes and pineapples, all blended with creamy coconut milk for a vibrant, sun-colored treat.' },
+  { id: 'smoothie-4', name: 'Nutty Tropical', price: 40.0, type: 'smoothie', description: 'Peanut butter, banana, and dates with a splash of coconut.', longDescription: 'Protein meets paradise. A satisfying blend of natural peanut butter and sweet bananas, sweetened naturally with dates and lightened with a splash of coconut water. It is rich, filling, and incredibly tasty.' },
+];
+
+export const allDrinks = [...fruitDrinks, ...cocktails, ...shakes, ...smoothies];
 
 export function getDrinkById(id: string): Drink | undefined {
   return allDrinks.find(d => d.id === id);

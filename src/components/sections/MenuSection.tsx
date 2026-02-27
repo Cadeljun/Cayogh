@@ -1,12 +1,11 @@
-
 "use client";
 
 import { DrinkCard } from './DrinkCard';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { fruitDrinks, cocktails, shakes, Drink } from '@/lib/drinks';
+import { fruitDrinks, cocktails, shakes, smoothies, Drink } from '@/lib/drinks';
 
 interface MenuSectionProps {
-  category?: 'fruit-drink' | 'cocktail' | 'shake' | 'all';
+  category?: 'fruit-drink' | 'cocktail' | 'shake' | 'smoothie' | 'all';
 }
 
 export function MenuSection({ category = 'all' }: MenuSectionProps) {
@@ -50,6 +49,14 @@ export function MenuSection({ category = 'all' }: MenuSectionProps) {
         fruitDrinks,
         "Signature Drinks",
         "Our signature series brings you the freshest island flavors in a sleek, convenient format."
+      )}
+
+      {(category === 'all' || category === 'smoothie') && renderSection(
+        "Smoothies",
+        "text-green-500",
+        smoothies,
+        "Healthy Blends",
+        "Nutrient-packed smoothies made with superfoods and fresh tropical fruits for a natural energy boost."
       )}
 
       {(category === 'all' || category === 'shake') && renderSection(

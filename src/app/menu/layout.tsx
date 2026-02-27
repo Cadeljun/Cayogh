@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Navbar } from '@/components/layout/Navbar';
@@ -11,6 +10,7 @@ const menuNavLinks = [
   { name: 'All Drinks', href: '/menu' },
   { name: 'Fruit Drinks', href: '/menu/fruit-drinks' },
   { name: 'Island Shakes', href: '/menu/shakes' },
+  { name: 'Smoothies', href: '/menu/smoothies' },
   { name: 'Elegant Cocktails', href: '/menu/cocktails' },
 ];
 
@@ -27,7 +27,7 @@ export default function MenuLayout({ children }: { children: React.ReactNode }) 
               Our <span className="text-primary">Menu</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Discover our curated selection of 16+ premium tropical beverages, crafted for the ultimate refreshment.
+              Discover our curated selection of premium tropical beverages, crafted for the ultimate refreshment.
             </p>
           </div>
           
