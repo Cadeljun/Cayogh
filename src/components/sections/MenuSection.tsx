@@ -9,6 +9,10 @@ const fruitDrinks = [
   { name: 'Berry Splash', price: 28.0, id: 'fruit-drink-2', description: 'Fresh mixed berries with a hint of citrus and tropical syrup.' },
   { name: 'Island Breeze', price: 22.0, id: 'fruit-drink-3', description: 'Cool coconut water infused with lime and garden mint.' },
   { name: 'Citrus Rush', price: 24.0, id: 'fruit-drink-4', description: 'An energizing mix of orange, lemon, and calamansi.' },
+  { name: 'Mango Tango', price: 26.0, id: 'fruit-drink-5', description: 'Pure mango puree with a spicy ginger kick.' },
+  { name: 'Pineapple Punch', price: 23.0, id: 'fruit-drink-6', description: 'Sweet pineapple juice balanced with tart hibiscus.' },
+  { name: 'Watermelon Wave', price: 20.0, id: 'fruit-drink-7', description: 'Cold-pressed watermelon with a dash of sea salt.' },
+  { name: 'Guava Glow', price: 27.0, id: 'fruit-drink-8', description: 'Pink guava nectar with vitamin-rich tropical extracts.' },
 ];
 
 const cocktails = [
@@ -16,6 +20,10 @@ const cocktails = [
   { name: 'Velvet Martini', price: 70.0, id: 'cocktail-2', description: 'Smooth vodka base with elderflower liqueur and vanilla notes.' },
   { name: 'Classic Mojito', price: 55.0, id: 'cocktail-3', description: 'The ultimate garden fresh drink with white rum and muddied mint.' },
   { name: 'Midnight Passion', price: 75.0, id: 'cocktail-4', description: 'Dark and mysterious: black vodka with passionfruit and charcoal syrup.' },
+  { name: 'Island Mule', price: 60.0, id: 'cocktail-5', description: 'Spiced rum, spicy ginger beer, and fresh lime.' },
+  { name: 'Cayo Colada', price: 68.0, id: 'cocktail-6', description: 'Creamy coconut cream with white rum and fresh pineapple.' },
+  { name: 'Tropical Gin Fizz', price: 62.0, id: 'cocktail-7', description: 'Gin infused with botanicals and topped with passionfruit foam.' },
+  { name: 'Zesty Margarita', price: 64.0, id: 'cocktail-8', description: 'Premium tequila with triple sec and a spicy tajin rim.' },
 ];
 
 export function MenuSection() {
@@ -31,10 +39,10 @@ export function MenuSection() {
             <h2 className="text-4xl md:text-5xl font-headline font-extrabold">Fruit Drinks in <span className="text-primary">PET Cans</span></h2>
           </div>
           <p className="max-w-md text-muted-foreground">
-            Our signature canned series brings you the freshest island flavors in a sleek, convenient PET can. Perfect for beach days and office breaks.
+            Our signature canned series brings you the freshest island flavors in a sleek, convenient PET can.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {fruitDrinks.map((drink) => {
             const imgData = images.find(img => img.id === drink.id);
             return (
@@ -43,8 +51,8 @@ export function MenuSection() {
                 name={drink.name}
                 price={drink.price}
                 description={drink.description}
-                image={imgData?.imageUrl || ''}
-                imageHint={imgData?.imageHint || ''}
+                image={imgData?.imageUrl || 'https://picsum.photos/seed/fallback/600/800'}
+                imageHint={imgData?.imageHint || 'drink'}
               />
             );
           })}
@@ -59,10 +67,10 @@ export function MenuSection() {
             <h2 className="text-4xl md:text-5xl font-headline font-extrabold">Elegant <span className="text-secondary">Glass Cocktails</span></h2>
           </div>
           <p className="max-w-md text-muted-foreground">
-            Sip on luxury with our masterfully crafted cocktails. Served in elegant glassware with artisanal garnishes.
+            Sip on luxury with our masterfully crafted cocktails, served in elegant glassware.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {cocktails.map((drink) => {
             const imgData = images.find(img => img.id === drink.id);
             return (
@@ -71,8 +79,8 @@ export function MenuSection() {
                 name={drink.name}
                 price={drink.price}
                 description={drink.description}
-                image={imgData?.imageUrl || ''}
-                imageHint={imgData?.imageHint || ''}
+                image={imgData?.imageUrl || 'https://picsum.photos/seed/fallback/600/800'}
+                imageHint={imgData?.imageHint || 'drink'}
               />
             );
           })}

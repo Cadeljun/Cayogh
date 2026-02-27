@@ -6,7 +6,7 @@ import { Instagram, Twitter, Mail, MapPin, Phone } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer id="contact" className="bg-background border-t border-white/5 pt-24 pb-12">
+    <footer className="bg-background border-t border-white/5 pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
@@ -34,10 +34,10 @@ export function Footer() {
           <div className="space-y-6">
             <h4 className="text-xl font-bold">Quick Links</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
-              <li><Link href="#menu" className="text-muted-foreground hover:text-primary transition-colors">Menu</Link></li>
-              <li><Link href="#events" className="text-muted-foreground hover:text-primary transition-colors">Event Booking</Link></li>
-              <li><Link href="#gallery" className="text-muted-foreground hover:text-primary transition-colors">Photo Gallery</Link></li>
+              <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
+              <li><Link href="/menu" className="text-muted-foreground hover:text-primary transition-colors">Menu</Link></li>
+              <li><Link href="/events" className="text-muted-foreground hover:text-primary transition-colors">Events</Link></li>
+              <li><Link href="/gallery" className="text-muted-foreground hover:text-primary transition-colors">Gallery</Link></li>
             </ul>
           </div>
 
