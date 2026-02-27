@@ -21,7 +21,7 @@
     {
       "id": "fruit-drink-2",
       "description": "Berry Splash Fruit Drink",
-      "imageUrl": "https://images.unsplash.com/photo-1705413081012-ef1c2169a380?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiZXJyeSUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://i.imgur.com/X0zxfCS.png",
       "imageHint": "berry drink"
     },
     {
@@ -33,7 +33,7 @@
     {
       "id": "fruit-drink-4",
       "description": "Citrus Rush Fruit Drink",
-      "imageUrl": "https://images.unsplash.com/photo-1598203495704-8b86abb5d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZW1vbiUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1598203495704-8b86abb5d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw8fHxsZW1vbiUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "lemon drink"
     },
     {
