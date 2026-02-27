@@ -1,10 +1,9 @@
-
 export interface Drink {
   id: string;
   name: string;
   price: number;
   description: string;
-  type: 'fruit-drink' | 'cocktail';
+  type: 'fruit-drink' | 'cocktail' | 'shake';
   longDescription?: string;
 }
 
@@ -30,7 +29,14 @@ export const cocktails: Drink[] = [
   { id: 'cocktail-8', name: 'Zesty Margarita', price: 64.0, type: 'cocktail', description: 'Premium tequila with triple sec and a spicy tajin rim.', longDescription: 'A classic with a kick. We use 100% blue agave tequila, fresh-squeezed lime, and a hint of agave nectar, served in a glass rimmed with spicy tajin salt for a perfect balance of sweet, sour, and heat.' },
 ];
 
-export const allDrinks = [...fruitDrinks, ...cocktails];
+export const shakes: Drink[] = [
+  { id: 'shake-1', name: 'Vanilla Island', price: 45.0, type: 'shake', description: 'Creamy vanilla bean shake with a hint of toasted coconut.', longDescription: 'A classic favorite with a tropical soul. We blend premium vanilla bean ice cream with organic coconut milk and topped with golden toasted coconut flakes for a smooth, indulgent finish.' },
+  { id: 'shake-2', name: 'Choco-Coco', price: 48.0, type: 'shake', description: 'Dark chocolate richness blended with fresh coconut cream.', longDescription: 'For the ultimate chocolate lover. This shake combines 70% dark Ghanaian cocoa with velvety coconut cream and a swirl of house-made chocolate ganache.' },
+  { id: 'shake-3', name: 'Strawberry Dream', price: 42.0, type: 'shake', description: 'Fresh local strawberries blended into a thick, creamy delight.', longDescription: 'Pure berry bliss. We use a double portion of fresh, sun-ripened strawberries from the Volta region, blended until perfectly thick and creamy.' },
+  { id: 'shake-4', name: 'Mango Cream', price: 46.0, type: 'shake', description: 'Velvety mango puree meets premium vanilla cream.', longDescription: 'The ultimate tropical treat. A thick, lush blend of our signature mango puree and high-quality vanilla cream, creating a sunshine-colored shake that is as rich as it is refreshing.' },
+];
+
+export const allDrinks = [...fruitDrinks, ...cocktails, ...shakes];
 
 export function getDrinkById(id: string): Drink | undefined {
   return allDrinks.find(d => d.id === id);

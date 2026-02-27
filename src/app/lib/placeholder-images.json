@@ -1,4 +1,3 @@
-
 {
   "placeholderImages": [
     {
@@ -34,32 +33,8 @@
     {
       "id": "fruit-drink-4",
       "description": "Citrus Rush Fruit Drink",
-      "imageUrl": "https://images.unsplash.com/photo-1598203495704-8b86abb5d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZW1vbiUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1598203495704-8b86abb5d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw8fHxsZW1vbiUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "lemon drink"
-    },
-    {
-      "id": "fruit-drink-5",
-      "description": "Mango Tango",
-      "imageUrl": "https://picsum.photos/seed/mango/600/800",
-      "imageHint": "mango juice"
-    },
-    {
-      "id": "fruit-drink-6",
-      "description": "Pineapple Punch",
-      "imageUrl": "https://picsum.photos/seed/pineapple/600/800",
-      "imageHint": "pineapple drink"
-    },
-    {
-      "id": "fruit-drink-7",
-      "description": "Watermelon Wave",
-      "imageUrl": "https://picsum.photos/seed/watermelon/600/800",
-      "imageHint": "watermelon juice"
-    },
-    {
-      "id": "fruit-drink-8",
-      "description": "Guava Glow",
-      "imageUrl": "https://picsum.photos/seed/guava/600/800",
-      "imageHint": "guava drink"
     },
     {
       "id": "cocktail-1",
@@ -86,28 +61,28 @@
       "imageHint": "purple cocktail"
     },
     {
-      "id": "cocktail-5",
-      "description": "Island Mule",
-      "imageUrl": "https://picsum.photos/seed/mule/600/800",
-      "imageHint": "copper mug"
+      "id": "shake-1",
+      "description": "Vanilla Island Shake",
+      "imageUrl": "https://images.unsplash.com/photo-1541658016709-8273f8d7bc76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2YW5pbGxhJTIwc2hha2V8ZW58MHx8fHwxNzcyMjI0MjA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vanilla shake"
     },
     {
-      "id": "cocktail-6",
-      "description": "Cayo Colada",
-      "imageUrl": "https://picsum.photos/seed/colada/600/800",
-      "imageHint": "pina colada"
+      "id": "shake-2",
+      "description": "Choco-Coco Shake",
+      "imageUrl": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaG9jb2xhdGUlMjBzaGhaZ3xlbnwwfHx8fDE3NzIyMjQyMDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chocolate shake"
     },
     {
-      "id": "cocktail-7",
-      "description": "Tropical Gin Fizz",
-      "imageUrl": "https://picsum.photos/seed/ginfizz/600/800",
-      "imageHint": "gin cocktail"
+      "id": "shake-3",
+      "description": "Strawberry Dream Shake",
+      "imageUrl": "https://images.unsplash.com/photo-1553174241-0b28d763cafa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdHJhd2JlcnJ5JTIwc2hha2V8ZW58MHx8fHwxNzcyMjI0MjA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "strawberry shake"
     },
     {
-      "id": "cocktail-8",
-      "description": "Zesty Margarita",
-      "imageUrl": "https://picsum.photos/seed/margarita/600/800",
-      "imageHint": "margarita glass"
+      "id": "shake-4",
+      "description": "Mango Cream Shake",
+      "imageUrl": "https://images.unsplash.com/photo-1517093157656-b9424f461507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW5nbyUyMHNoYWtlfGVufDB8fHx8MTc3MjIyNDIwNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mango shake"
     },
     {
       "id": "gallery-1",

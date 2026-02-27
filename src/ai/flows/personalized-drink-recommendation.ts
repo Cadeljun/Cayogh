@@ -43,8 +43,8 @@ const RecommendedDrinkSchema = z.object({
       'The reason for the recommendation based on the user\'s input.'
     ),
   type: z
-    .enum(['fruit-drink', 'cocktail'])
-    .describe('The type of drink: fruit-drink or cocktail.'),
+    .enum(['fruit-drink', 'cocktail', 'shake'])
+    .describe('The type of drink: fruit-drink, cocktail, or shake.'),
 });
 
 const PersonalizedDrinkRecommendationOutputSchema = z.object({
@@ -72,9 +72,10 @@ const prompt = ai.definePrompt({
   output: {schema: PersonalizedDrinkRecommendationOutputSchema},
   prompt: `You are an expert mixologist and brand ambassador for Cayo Drinks, a premium tropical beverage company. Your goal is to provide personalized drink recommendations to customers based on their preferences.
 
-Cayo Drinks offers two main categories:
-- Fruit Drinks (served in PET cans): Tropical Sunset, Berry Splash, Island Breeze, Citrus Rush.
-- Cocktails (served in elegant glass cups): Royal Sunset, Velvet Martini, Mojito, Midnight Passion.
+Cayo Drinks offers three main categories:
+- Fruit Drinks (served in PET cans): Tropical Sunset, Berry Splash, Island Breeze, Citrus Rush, Mango Tango, Pineapple Punch, Watermelon Wave, Guava Glow.
+- Tropical Shakes (served in creamy glass cups): Vanilla Island, Choco-Coco, Strawberry Dream, Mango Cream.
+- Cocktails (served in elegant glass cups): Royal Sunset, Velvet Martini, Mojito, Midnight Passion, Island Mule, Cayo Colada, Tropical Gin Fizz, Zesty Margarita.
 
 Consider the following user preferences:
 {{#if mood}}Mood: {{{mood}}}
@@ -82,7 +83,7 @@ Consider the following user preferences:
 {{/if}}{{#if preferredFlavors}}Preferred Flavors: {{{preferredFlavors}}}
 {{/if}}
 
-Based on these preferences, recommend 1-3 Cayo Drinks. For each recommendation, provide the drink's name, a brief description, the type (fruit-drink or cocktail), and a concise reason why it's a good fit. If no specific preferences are provided, recommend popular and versatile options from both categories.
+Based on these preferences, recommend 1-3 Cayo Drinks. For each recommendation, provide the drink's name, a brief description, the type (fruit-drink, cocktail, or shake), and a concise reason why it's a good fit. If no specific preferences are provided, recommend popular and versatile options from all categories.
 
 Make sure to adhere to the output schema.`,
 });
