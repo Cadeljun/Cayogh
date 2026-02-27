@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Hero } from '@/components/sections/Hero';
-import { MenuSection } from '@/components/sections/MenuSection';
 import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
 import { DrinkRecommender } from '@/components/sections/DrinkRecommender';
 import { EventBooking } from '@/components/sections/EventBooking';
@@ -36,8 +35,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
-      <MenuSection />
       
       <DrinkRecommender />
 
