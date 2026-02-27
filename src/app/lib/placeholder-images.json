@@ -56,6 +56,18 @@
       "imageHint": "pineapple drink"
     },
     {
+      "id": "fruit-drink-7",
+      "description": "Watermelon Wave Fruit Drink",
+      "imageUrl": "https://i.imgur.com/jvG43RH.png",
+      "imageHint": "watermelon drink"
+    },
+    {
+      "id": "fruit-drink-8",
+      "description": "Guava Glow Fruit Drink",
+      "imageUrl": "https://i.imgur.com/Go6kzBj.png",
+      "imageHint": "guava drink"
+    },
+    {
       "id": "cocktail-1",
       "description": "Royal Sunset Cocktail",
       "imageUrl": "https://i.imgur.com/Go6kzBj.png",
@@ -78,6 +90,30 @@
       "description": "Midnight Passion Cocktail",
       "imageUrl": "https://i.imgur.com/jvG43RH.png",
       "imageHint": "purple cocktail"
+    },
+    {
+      "id": "cocktail-5",
+      "description": "Island Mule Cocktail",
+      "imageUrl": "https://i.imgur.com/t55eEnj.png",
+      "imageHint": "copper mug"
+    },
+    {
+      "id": "cocktail-6",
+      "description": "Cayo Colada",
+      "imageUrl": "https://i.imgur.com/X0zxfCS.png",
+      "imageHint": "coconut drink"
+    },
+    {
+      "id": "cocktail-7",
+      "description": "Tropical Gin Fizz",
+      "imageUrl": "https://i.imgur.com/GpTbSTf.png",
+      "imageHint": "fizz drink"
+    },
+    {
+      "id": "cocktail-8",
+      "description": "Zesty Margarita",
+      "imageUrl": "https://i.imgur.com/Go6kzBj.png",
+      "imageHint": "margarita glass"
     },
     {
       "id": "shake-1",
