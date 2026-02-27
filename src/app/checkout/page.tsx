@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
@@ -14,28 +14,108 @@ import { useCart } from '@/context/CartContext';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle2, ArrowLeft, CreditCard, Truck, ShieldCheck } from 'lucide-react';
+import { useFirestore, useUser, useAuth } from '@/firebase';
+import { doc, collection, serverTimestamp } from 'firebase/firestore';
+import { addDocumentNonBlocking, setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
+import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
 
 export default function CheckoutPage() {
   const { cart, totalPrice, clearCart, cartCount } = useCart();
   const { toast } = useToast();
   const router = useRouter();
+  const { user, isUserLoading } = useUser();
+  const db = useFirestore();
+  const auth = useAuth();
+  
   const [isOrdering, setIsOrdering] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [orderId, setOrderId] = useState<string | null>(null);
 
-  const handlePlaceOrder = (e: React.FormEvent) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!db) return;
+
     setIsOrdering(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsOrdering(false);
-      setIsSuccess(true);
-      clearCart();
+
+    // Ensure user is signed in (at least anonymously) to save order
+    let currentUserId = user?.uid;
+    if (!currentUserId) {
+      initiateAnonymousSignIn(auth);
+      // We'll wait a brief moment for the auth state to settle, 
+      // though non-blocking login usually triggers a re-render.
+      // In a real app, we might handle this transition more explicitly.
       toast({
-        title: "Order Placed Successfully!",
-        description: "Your tropical refreshers are on their way.",
+        title: "Preparing Order",
+        description: "Signing you in to track your order...",
       });
-    }, 2000);
+      return; // The effect below will re-trigger if user becomes available
+    }
+
+    try {
+      const orderData = {
+        ownerId: currentUserId,
+        customerName: `${formData.firstName} ${formData.lastName}`,
+        customerEmail: formData.email,
+        customerPhoneNumber: formData.phone,
+        deliveryAddress: formData.address,
+        totalAmount: totalPrice,
+        currency: 'GH₵',
+        status: 'Processing',
+        orderDate: new Date().toISOString(),
+        createdAt: serverTimestamp(),
+      };
+
+      // Create order document
+      const ordersRef = collection(db, 'users', currentUserId, 'orders');
+      const orderDocPromise = addDocumentNonBlocking(ordersRef, orderData);
+      
+      const orderRef = await orderDocPromise;
+      if (orderRef) {
+        setOrderId(orderRef.id);
+
+        // Add order items
+        const itemsRef = collection(db, 'users', currentUserId, 'orders', orderRef.id, 'orderItems');
+        cart.forEach(item => {
+          addDocumentNonBlocking(itemsRef, {
+            ownerId: currentUserId,
+            orderId: orderRef.id,
+            productId: item.id,
+            name: item.name,
+            quantity: item.quantity,
+            unitPrice: item.price
+          });
+        });
+
+        setIsSuccess(true);
+        clearCart();
+        toast({
+          title: "Order Placed Successfully!",
+          description: "Your tropical refreshers are on their way.",
+        });
+      }
+    } catch (error) {
+      console.error("Error placing order:", error);
+      toast({
+        variant: "destructive",
+        title: "Order Failed",
+        description: "There was a problem placing your order. Please try again.",
+      });
+    } finally {
+      setIsOrdering(false);
+    }
   };
 
   if (isSuccess) {
@@ -62,11 +142,18 @@ export default function CheckoutPage() {
               <span className="font-bold">30-45 Minutes</span>
             </div>
           </div>
-          <Link href="/menu" className="block">
-            <Button size="lg" className="w-full h-14 bg-primary text-primary-foreground rounded-2xl text-lg font-bold">
-              Back to Menu
-            </Button>
-          </Link>
+          <div className="flex flex-col gap-4">
+            <Link href={`/track/${orderId}`} className="block">
+              <Button size="lg" className="w-full h-14 bg-primary text-primary-foreground rounded-2xl text-lg font-bold">
+                Track Your Order
+              </Button>
+            </Link>
+            <Link href="/menu" className="block">
+              <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl text-lg font-bold border-white/10">
+                Back to Menu
+              </Button>
+            </Link>
+          </div>
         </div>
         <Footer />
       </main>
@@ -99,7 +186,6 @@ export default function CheckoutPage() {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Checkout Form */}
           <div className="space-y-12">
             <div className="space-y-2">
               <h1 className="text-5xl font-headline font-extrabold">Checkout</h1>
@@ -114,24 +200,24 @@ export default function CheckoutPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" required className="bg-card border-white/5 h-12" />
+                    <Input id="firstName" placeholder="John" required className="bg-card border-white/5 h-12" value={formData.firstName} onChange={handleInputChange} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" required className="bg-card border-white/5 h-12" />
+                    <Input id="lastName" placeholder="Doe" required className="bg-card border-white/5 h-12" value={formData.lastName} onChange={handleInputChange} />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" placeholder="john@example.com" required className="bg-card border-white/5 h-12" />
+                  <Input id="email" type="email" placeholder="john@example.com" required className="bg-card border-white/5 h-12" value={formData.email} onChange={handleInputChange} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="+233 555 000 000" required className="bg-card border-white/5 h-12" />
+                  <Input id="phone" type="tel" placeholder="+233 555 000 000" required className="bg-card border-white/5 h-12" value={formData.phone} onChange={handleInputChange} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="address">Delivery Address</Label>
-                  <Textarea id="address" placeholder="e.g. 123 Tropical Way, East Legon, Accra" required className="bg-card border-white/5 min-h-[100px]" />
+                  <Textarea id="address" placeholder="e.g. 123 Tropical Way, East Legon, Accra" required className="bg-card border-white/5 min-h-[100px]" value={formData.address} onChange={handleInputChange} />
                 </div>
               </div>
 
@@ -161,7 +247,6 @@ export default function CheckoutPage() {
             </form>
           </div>
 
-          {/* Order Summary Sticky */}
           <div className="lg:sticky lg:top-32 space-y-8">
             <div className="bg-card p-8 rounded-[2.5rem] border border-white/5 shadow-2xl space-y-6">
               <h3 className="text-2xl font-headline font-bold">Your Order</h3>

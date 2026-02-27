@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, ShoppingCart } from 'lucide-react';
+import { Menu, X, ShoppingCart, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useCart } from '@/context/CartContext';
@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Menu', href: '/menu' },
+  { name: 'Track', href: '/track' },
   { name: 'Events', href: '/events' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'Contact', href: '/contact' },
@@ -56,6 +57,11 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
+          <Link href="/track">
+            <Button variant="ghost" size="icon" className="hover:text-primary relative" title="My Orders">
+              <Package className="w-5 h-5" />
+            </Button>
+          </Link>
           <Link href="/cart">
             <Button variant="ghost" size="icon" className="hover:text-primary relative">
               <ShoppingCart className="w-5 h-5" />
@@ -75,6 +81,11 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <div className="flex items-center gap-2 md:hidden">
+          <Link href="/track">
+            <Button variant="ghost" size="icon" className="hover:text-primary relative">
+              <Package className="w-5 h-5" />
+            </Button>
+          </Link>
           <Link href="/cart">
             <Button variant="ghost" size="icon" className="hover:text-primary relative">
               <ShoppingCart className="w-5 h-5" />
