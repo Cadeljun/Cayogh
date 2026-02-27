@@ -14,10 +14,10 @@ export function MenuSection() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
           <div className="space-y-3">
             <span className="text-primary font-bold uppercase tracking-widest text-xs">Signature Drinks</span>
-            <h2 className="text-3xl md:text-4xl font-headline font-extrabold">Fruit Drinks in <span className="text-primary">PET Cans</span></h2>
+            <h2 className="text-3xl md:text-4xl font-headline font-extrabold">Fruit <span className="text-primary">Drinks</span></h2>
           </div>
           <p className="max-w-md text-sm text-muted-foreground">
-            Our signature canned series brings you the freshest island flavors in a sleek, convenient PET can.
+            Our signature series brings you the freshest island flavors in a sleek, convenient format.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 lg:gap-4">
