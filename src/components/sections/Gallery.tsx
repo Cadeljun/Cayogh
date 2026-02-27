@@ -1,11 +1,20 @@
 
 "use client";
 
+import { useState } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export function Gallery() {
   const galleryImages = PlaceHolderImages.filter(img => img.id.startsWith('gallery'));
+  const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
 
   return (
     <section id="gallery" className="py-24 max-w-7xl mx-auto px-6 lg:px-12">
@@ -22,8 +31,14 @@ export function Gallery() {
             key={i} 
             className="relative overflow-hidden rounded-lg aspect-[4/3] group cursor-pointer shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             tabIndex={0}
-            role="img"
-            aria-label={img.description}
+            role="button"
+            aria-label={`View ${img.description}`}
+            onClick={() => setSelectedImage(img)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                setSelectedImage(img);
+              }
+            }}
           >
             <Image
               src={img.imageUrl}
@@ -38,6 +53,26 @@ export function Gallery() {
           </div>
         ))}
       </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl border-none bg-transparent p-0 shadow-none sm:rounded-[2rem] overflow-hidden">
+          {selectedImage && (
+            <div className="relative w-full aspect-video md:aspect-[16/9] bg-card rounded-[2rem] overflow-hidden border border-white/10">
+               <Image
+                src={selectedImage.imageUrl}
+                alt={selectedImage.description}
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                <h3 className="text-xl md:text-3xl font-headline font-bold text-white mb-2">{selectedImage.description}</h3>
+                <p className="text-sm md:text-base text-white/70 italic">#CayoMoments #TropicalRefreshment</p>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
