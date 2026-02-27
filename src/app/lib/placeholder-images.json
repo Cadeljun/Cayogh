@@ -50,6 +50,12 @@
       "imageHint": "mango drink"
     },
     {
+      "id": "fruit-drink-6",
+      "description": "Pineapple Punch Fruit Drink",
+      "imageUrl": "https://i.imgur.com/Go6kzBj.png",
+      "imageHint": "pineapple drink"
+    },
+    {
       "id": "cocktail-1",
       "description": "Royal Sunset Cocktail",
       "imageUrl": "https://i.imgur.com/WA4cY02.png",
