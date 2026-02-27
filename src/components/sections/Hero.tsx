@@ -24,28 +24,31 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-secondary/20 blur-[100px] rounded-full pointer-events-none" />
-
-      {/* Hero Background Image behind text */}
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-background">
+      {/* Hero Background Image behind everything */}
       {heroBg && (
-        <div className="absolute inset-0 w-full lg:w-3/4 h-full opacity-30 pointer-events-none z-0">
+        <div className="absolute inset-0 w-full h-full opacity-60 pointer-events-none z-0">
           <Image
             src={heroBg.imageUrl}
             alt="Hero background texture"
             fill
             className="object-cover"
+            priority
             data-ai-hint={heroBg.imageHint}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent" />
+          {/* Enhanced Dark Gradient Overlays for Visibility & Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      {/* Decorative Blur Orbs */}
+      <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full pointer-events-none z-10" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-secondary/20 blur-[100px] rounded-full pointer-events-none z-10" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-20">
         <div className="space-y-8 text-center lg:text-left relative py-12">
-          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-sm font-medium text-primary">
+          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-sm font-medium text-primary backdrop-blur-sm">
             <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
             Vibrant & Refreshing
           </div>
@@ -54,18 +57,18 @@ export function Hero() {
             <span className="text-primary">Premium Drinks</span> <br />
             & Cocktails
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 bg-black/10 backdrop-blur-[2px] rounded-lg">
             Fresh tropical flavors crafted for unforgettable moments. From PET canned refreshments to elegant glassware mixology.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Link href="/menu">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 text-lg font-semibold group">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 text-lg font-semibold group shadow-lg shadow-primary/20">
                 View Menu
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             <Link href="/events">
-              <Button size="lg" variant="outline" className="rounded-full px-8 text-lg font-semibold border-white/20 hover:bg-white/5">
+              <Button size="lg" variant="outline" className="rounded-full px-8 text-lg font-semibold border-white/20 hover:bg-white/5 backdrop-blur-sm">
                 Book an Event
               </Button>
             </Link>
