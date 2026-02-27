@@ -67,6 +67,30 @@
       "imageHint": "purple cocktail"
     },
     {
+      "id": "shake-1",
+      "description": "Vanilla Island Shake",
+      "imageUrl": "https://images.unsplash.com/photo-1541658016709-8273f8d7bc76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2YW5pbGxhJTIwc2hha2V8ZW58MHx8fHwxNzcyMjI0MjA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vanilla shake"
+    },
+    {
+      "id": "shake-2",
+      "description": "Choco-Coco Shake",
+      "imageUrl": "https://i.imgur.com/X0zxfCS.png",
+      "imageHint": "chocolate shake"
+    },
+    {
+      "id": "shake-3",
+      "description": "Strawberry Dream Shake",
+      "imageUrl": "https://images.unsplash.com/photo-1553174241-0b28d763cafa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdHJhd2JlcnJ5JTIwc2hha2V8ZW58MHx8fHwxNzcyMjI0MjA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "strawberry shake"
+    },
+    {
+      "id": "shake-4",
+      "description": "Mango Cream Shake",
+      "imageUrl": "https://images.unsplash.com/photo-1517093157656-b9424f461507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW5nbyUyMHNoYWtlfGVufDB8fHx8MTc3MjIyNDIwNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mango shake"
+    },
+    {
       "id": "gallery-1",
       "description": "Fresh tropical fruits",
       "imageUrl": "https://images.unsplash.com/photo-1605027990121-cbae9e0642df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0cm9waWNhbCUyMGZydWl0c3xlbnwwfHx8fDE3NzIxMTcwOTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
