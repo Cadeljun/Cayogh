@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { Menu, X, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useCart } from '@/context/CartContext';
+import { Badge } from '@/components/ui/badge';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -18,6 +20,7 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,21 +56,42 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost" size="icon" className="hover:text-primary">
-            <ShoppingCart className="w-5 h-5" />
-          </Button>
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
-            Order Now
-          </Button>
+          <Link href="/cart">
+            <Button variant="ghost" size="icon" className="hover:text-primary relative">
+              <ShoppingCart className="w-5 h-5" />
+              {cartCount > 0 && (
+                <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 text-[10px] bg-secondary text-white">
+                  {cartCount}
+                </Badge>
+              )}
+            </Button>
+          </Link>
+          <Link href="/menu">
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
+              Order Now
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-foreground p-2"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X /> : <Menu />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <Link href="/cart">
+            <Button variant="ghost" size="icon" className="hover:text-primary relative">
+              <ShoppingCart className="w-5 h-5" />
+              {cartCount > 0 && (
+                <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 text-[10px] bg-secondary text-white">
+                  {cartCount}
+                </Badge>
+              )}
+            </Button>
+          </Link>
+          <button
+            className="text-foreground p-2"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -83,9 +107,11 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button className="bg-primary text-primary-foreground mt-4 w-full">
-            Order Now
-          </Button>
+          <Link href="/menu" onClick={() => setIsOpen(false)}>
+            <Button className="bg-primary text-primary-foreground mt-4 w-full">
+              Order Now
+            </Button>
+          </Link>
         </div>
       )}
     </nav>

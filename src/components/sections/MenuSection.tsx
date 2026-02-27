@@ -3,28 +3,7 @@
 
 import { DrinkCard } from './DrinkCard';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-
-const fruitDrinks = [
-  { name: 'Tropical Sunset', price: 25.0, id: 'fruit-drink-1', description: 'A refreshing blend of mango, pineapple, and a touch of passionfruit.' },
-  { name: 'Berry Splash', price: 28.0, id: 'fruit-drink-2', description: 'Fresh mixed berries with a hint of citrus and tropical syrup.' },
-  { name: 'Island Breeze', price: 22.0, id: 'fruit-drink-3', description: 'Cool coconut water infused with lime and garden mint.' },
-  { name: 'Citrus Rush', price: 24.0, id: 'fruit-drink-4', description: 'An energizing mix of orange, lemon, and calamansi.' },
-  { name: 'Mango Tango', price: 26.0, id: 'fruit-drink-5', description: 'Pure mango puree with a spicy ginger kick.' },
-  { name: 'Pineapple Punch', price: 23.0, id: 'fruit-drink-6', description: 'Sweet pineapple juice balanced with tart hibiscus.' },
-  { name: 'Watermelon Wave', price: 20.0, id: 'fruit-drink-7', description: 'Cold-pressed watermelon with a dash of sea salt.' },
-  { name: 'Guava Glow', price: 27.0, id: 'fruit-drink-8', description: 'Pink guava nectar with vitamin-rich tropical extracts.' },
-];
-
-const cocktails = [
-  { name: 'Royal Sunset', price: 65.0, id: 'cocktail-1', description: 'Our premium house mix with aged rum, gold flakes, and dragonfruit.' },
-  { name: 'Velvet Martini', price: 70.0, id: 'cocktail-2', description: 'Smooth vodka base with elderflower liqueur and vanilla notes.' },
-  { name: 'Classic Mojito', price: 55.0, id: 'cocktail-3', description: 'The ultimate garden fresh drink with white rum and muddied mint.' },
-  { name: 'Midnight Passion', price: 75.0, id: 'cocktail-4', description: 'Dark and mysterious: black vodka with passionfruit and charcoal syrup.' },
-  { name: 'Island Mule', price: 60.0, id: 'cocktail-5', description: 'Spiced rum, spicy ginger beer, and fresh lime.' },
-  { name: 'Cayo Colada', price: 68.0, id: 'cocktail-6', description: 'Creamy coconut cream with white rum and fresh pineapple.' },
-  { name: 'Tropical Gin Fizz', price: 62.0, id: 'cocktail-7', description: 'Gin infused with botanicals and topped with passionfruit foam.' },
-  { name: 'Zesty Margarita', price: 64.0, id: 'cocktail-8', description: 'Premium tequila with triple sec and a spicy tajin rim.' },
-];
+import { fruitDrinks, cocktails } from '@/lib/drinks';
 
 export function MenuSection() {
   const images = PlaceHolderImages;
@@ -48,6 +27,7 @@ export function MenuSection() {
             return (
               <DrinkCard
                 key={drink.id}
+                id={drink.id}
                 name={drink.name}
                 price={drink.price}
                 description={drink.description}
@@ -76,6 +56,7 @@ export function MenuSection() {
             return (
               <DrinkCard
                 key={drink.id}
+                id={drink.id}
                 name={drink.name}
                 price={drink.price}
                 description={drink.description}
