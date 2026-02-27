@@ -11,7 +11,6 @@ export function Hero() {
   const heroImages = PlaceHolderImages.filter(img => img.id.startsWith('hero-drink'));
   const heroBg = PlaceHolderImages.find(img => img.id === 'hero-bg');
   
-  // Fallback images if PlaceHolderImages is not populated or filter returns nothing
   const img1 = heroImages[0] || {
     imageUrl: "https://picsum.photos/seed/fallback1/800/1000",
     description: "Tropical beverage",
@@ -32,7 +31,7 @@ export function Hero() {
 
       {/* Hero Background Image behind text */}
       {heroBg && (
-        <div className="absolute top-0 left-0 w-full lg:w-1/2 h-full opacity-10 pointer-events-none z-0">
+        <div className="absolute inset-0 w-full lg:w-3/4 h-full opacity-30 pointer-events-none z-0">
           <Image
             src={heroBg.imageUrl}
             alt="Hero background texture"
@@ -40,7 +39,7 @@ export function Hero() {
             className="object-cover"
             data-ai-hint={heroBg.imageHint}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent" />
         </div>
       )}
 
@@ -74,7 +73,6 @@ export function Hero() {
         </div>
 
         <div className="relative h-[500px] md:h-[700px] flex items-center justify-center">
-          {/* Main Hero Image 1 */}
           <div className="relative z-20 transform -rotate-6 hover:rotate-0 transition-transform duration-500 shadow-2xl rounded-3xl overflow-hidden border-4 border-white/10 w-64 md:w-80 h-96 md:h-[500px]">
              <Image
                 src={img1.imageUrl}
@@ -84,7 +82,6 @@ export function Hero() {
                 data-ai-hint={img1.imageHint}
              />
           </div>
-          {/* Main Hero Image 2 */}
           <div className="absolute z-10 transform translate-x-20 translate-y-20 rotate-12 hover:rotate-6 transition-transform duration-500 shadow-2xl rounded-3xl overflow-hidden border-4 border-white/10 w-64 md:w-80 h-96 md:h-[500px]">
              <Image
                 src={img2.imageUrl}
