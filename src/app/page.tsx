@@ -1,4 +1,5 @@
 
+import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { MenuSection } from '@/components/sections/MenuSection';
@@ -28,9 +29,11 @@ export default function Home() {
               <p className="text-muted-foreground">Scan at your table to view menu & order instantly.</p>
             </div>
           </div>
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8 h-12 font-bold">
-            Learn More
-          </Button>
+          <Link href="/menu">
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8 h-12 font-bold">
+              Learn More
+            </Button>
+          </Link>
         </div>
       </section>
 

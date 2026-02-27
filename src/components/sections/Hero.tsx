@@ -2,6 +2,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight, Play } from 'lucide-react';
@@ -43,13 +44,17 @@ export function Hero() {
             Fresh tropical flavors crafted for unforgettable moments. From PET canned refreshments to elegant glassware mixology.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 text-lg font-semibold group">
-              View Menu
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 text-lg font-semibold border-white/20 hover:bg-white/5">
-              Book an Event
-            </Button>
+            <Link href="/menu">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 text-lg font-semibold group">
+                View Menu
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link href="/events">
+              <Button size="lg" variant="outline" className="rounded-full px-8 text-lg font-semibold border-white/20 hover:bg-white/5">
+                Book an Event
+              </Button>
+            </Link>
           </div>
         </div>
 
