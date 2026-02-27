@@ -14,6 +14,12 @@
       "imageHint": "cocktail glass"
     },
     {
+      "id": "hero-bg",
+      "description": "Hero Background Texture",
+      "imageUrl": "https://imgur.com/BqusWM7.png",
+      "imageHint": "tropical leaves"
+    },
+    {
       "id": "fruit-drink-1",
       "description": "Tropical Sunset Fruit Drink",
       "imageUrl": "https://i.imgur.com/jvG43RH.png",

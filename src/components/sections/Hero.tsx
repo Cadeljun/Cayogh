@@ -9,6 +9,7 @@ import { ArrowRight, Play } from 'lucide-react';
 
 export function Hero() {
   const heroImages = PlaceHolderImages.filter(img => img.id.startsWith('hero-drink'));
+  const heroBg = PlaceHolderImages.find(img => img.id === 'hero-bg');
   
   // Fallback images if PlaceHolderImages is not populated or filter returns nothing
   const img1 = heroImages[0] || {
@@ -29,8 +30,22 @@ export function Hero() {
       <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-secondary/20 blur-[100px] rounded-full pointer-events-none" />
 
+      {/* Hero Background Image behind text */}
+      {heroBg && (
+        <div className="absolute top-0 left-0 w-full lg:w-1/2 h-full opacity-10 pointer-events-none z-0">
+          <Image
+            src={heroBg.imageUrl}
+            alt="Hero background texture"
+            fill
+            className="object-cover"
+            data-ai-hint={heroBg.imageHint}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-        <div className="space-y-8 text-center lg:text-left">
+        <div className="space-y-8 text-center lg:text-left relative py-12">
           <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-sm font-medium text-primary">
             <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
             Vibrant & Refreshing
