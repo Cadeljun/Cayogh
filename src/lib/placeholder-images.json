@@ -37,6 +37,12 @@
       "imageHint": "lemon drink"
     },
     {
+      "id": "fruit-drink-5",
+      "description": "Mango Tango Fruit Drink",
+      "imageUrl": "https://i.imgur.com/HGSwz9f.png",
+      "imageHint": "mango drink"
+    },
+    {
       "id": "cocktail-1",
       "description": "Royal Sunset Cocktail",
       "imageUrl": "https://i.imgur.com/WA4cY02.png",
