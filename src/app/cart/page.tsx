@@ -112,10 +112,12 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                <Button className="w-full h-14 bg-primary text-primary-foreground hover:bg-primary/90 text-lg font-bold rounded-2xl shadow-xl shadow-primary/20">
-                  Proceed to Checkout
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
+                <Link href="/checkout" className="block w-full">
+                  <Button className="w-full h-14 bg-primary text-primary-foreground hover:bg-primary/90 text-lg font-bold rounded-2xl shadow-xl shadow-primary/20">
+                    Proceed to Checkout
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
                 
                 <p className="text-[10px] text-center text-muted-foreground uppercase tracking-widest font-bold">
                   Secure Payment Guaranteed
