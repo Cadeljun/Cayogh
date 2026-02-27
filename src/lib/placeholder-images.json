@@ -13,6 +13,12 @@
       "imageHint": "cocktail glass"
     },
     {
+      "id": "hero-bg",
+      "description": "Hero Background Texture",
+      "imageUrl": "https://i.imgur.com/BqusWM7.png",
+      "imageHint": "tropical leaves"
+    },
+    {
       "id": "fruit-drink-1",
       "description": "Tropical Sunset Fruit Drink",
       "imageUrl": "https://i.imgur.com/jvG43RH.png",
@@ -131,6 +137,30 @@
       "description": "Mango Cream Shake",
       "imageUrl": "https://i.imgur.com/Go6kzBj.png",
       "imageHint": "mango shake"
+    },
+    {
+      "id": "smoothie-1",
+      "description": "Green Oasis Smoothie",
+      "imageUrl": "https://i.imgur.com/Vn7lpVh.png",
+      "imageHint": "green smoothie"
+    },
+    {
+      "id": "smoothie-2",
+      "description": "Purple Power Smoothie",
+      "imageUrl": "https://i.imgur.com/jvG43RH.png",
+      "imageHint": "berry smoothie"
+    },
+    {
+      "id": "smoothie-3",
+      "description": "Golden Glow Smoothie",
+      "imageUrl": "https://i.imgur.com/GpTbSTf.png",
+      "imageHint": "mango smoothie"
+    },
+    {
+      "id": "smoothie-4",
+      "description": "Nutty Tropical Smoothie",
+      "imageUrl": "https://i.imgur.com/WA4cY02.png",
+      "imageHint": "banana smoothie"
     },
     {
       "id": "gallery-1",
