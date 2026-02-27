@@ -27,13 +27,13 @@
     {
       "id": "fruit-drink-3",
       "description": "Island Breeze Fruit Drink",
-      "imageUrl": "https://images.unsplash.com/photo-1704224700896-501220134ffe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxncmVlbiUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://i.imgur.com/t55eEnj.png",
       "imageHint": "green drink"
     },
     {
       "id": "fruit-drink-4",
       "description": "Citrus Rush Fruit Drink",
-      "imageUrl": "https://images.unsplash.com/photo-1598203495704-8b86abb5d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw8fHxsZW1vbiUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1598203495704-8b86abb5d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZW1vbiUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "lemon drink"
     },
     {
@@ -51,7 +51,7 @@
     {
       "id": "cocktail-3",
       "description": "Classic Mojito",
-      "imageUrl": "https://images.unsplash.com/photo-1619604580082-e54fcde25493?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw8fHxtb2ppdG8lMjBkcmlua3xlbnwwfHx8fDE3NzIyMDk5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1619604580082-e54fcde25493?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtb2ppdG8lMjBkcmlua3xlbnwwfHx8fDE3NzIyMDk5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "mojito drink"
     },
     {
