@@ -72,7 +72,7 @@ export function MenuSection() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
           <div className="space-y-3">
             <span className="text-secondary font-bold uppercase tracking-widest text-xs">Crafted Mixology</span>
-            <h2 className="text-3xl md:text-4xl font-headline font-extrabold">Elegant <span className="text-secondary">Glass Cocktails</span></h2>
+            <h2 className="text-3xl md:text-4xl font-headline font-extrabold">Elegant <span className="text-secondary">Cocktails</span></h2>
           </div>
           <p className="max-w-md text-sm text-muted-foreground">
             Sip on luxury with our masterfully crafted cocktails, served in elegant glassware.
