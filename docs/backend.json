@@ -1,0 +1,472 @@
+{
+  "entities": {
+    "Product": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Product",
+      "type": "object",
+      "description": "Represents a beverage item sold by Cayo Drinks, including both fruit drinks and cocktails, available for showcase and ordering.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Product entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the beverage, e.g., 'Tropical Sunset'."
+        },
+        "description": {
+          "type": "string",
+          "description": "A short description detailing the beverage's flavor profile or ingredients."
+        },
+        "price": {
+          "type": "number",
+          "description": "The current selling price of the beverage in Ghana Cedis."
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency in which the price is denominated (e.g., 'GH₵')."
+        },
+        "type": {
+          "type": "string",
+          "description": "The category of the beverage, differentiating between fruit drinks and cocktails.",
+          "format": "enum",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL to a high-resolution image of the beverage.",
+          "format": "uri"
+        },
+        "isAvailable": {
+          "type": "boolean",
+          "description": "Indicates whether the product is currently available for purchase."
+        },
+        "ingredients": {
+          "type": "array",
+          "description": "A list of key ingredients used in the beverage.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "price",
+        "currency",
+        "type",
+        "imageUrl",
+        "isAvailable"
+      ]
+    },
+    "Order": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Order",
+      "type": "object",
+      "description": "Represents a customer's order placed through the QR code ordering system, enabling tracking of its status.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Order entity."
+        },
+        "orderDate": {
+          "type": "string",
+          "description": "The date and time when the order was placed.",
+          "format": "date-time"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "The name of the customer placing the order."
+        },
+        "customerEmail": {
+          "type": "string",
+          "description": "The email address of the customer for order communication.",
+          "format": "email"
+        },
+        "customerPhoneNumber": {
+          "type": "string",
+          "description": "The phone number of the customer for order communication."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the order, used for tracking progress.",
+          "format": "enum",
+          "items": {
+            "type": "string"
+          }
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "The total monetary cost of the order."
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency of the total order amount (e.g., 'GH₵')."
+        },
+        "pickupTime": {
+          "type": "string",
+          "description": "The scheduled time for order pickup, if the order is for pickup.",
+          "format": "date-time"
+        },
+        "deliveryAddress": {
+          "type": "string",
+          "description": "The delivery address for the order, if the order is for delivery."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any special instructions or notes provided by the customer for the entire order."
+        }
+      },
+      "required": [
+        "id",
+        "orderDate",
+        "customerName",
+        "customerEmail",
+        "status",
+        "totalAmount",
+        "currency"
+      ]
+    },
+    "OrderItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "OrderItem",
+      "type": "object",
+      "description": "Represents a specific product included within an Order, detailing its quantity and price at the time of purchase.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the OrderItem entity."
+        },
+        "orderId": {
+          "type": "string",
+          "description": "Reference to the Order this item belongs to. (Relationship: Order 1:N OrderItem)"
+        },
+        "productId": {
+          "type": "string",
+          "description": "Reference to the Product being ordered. (Relationship: Product 1:N OrderItem)"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The number of units of the product ordered."
+        },
+        "unitPrice": {
+          "type": "number",
+          "description": "The price of a single unit of the product at the time the order was placed."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any specific customization requests or notes for this individual item (e.g., 'no ice', 'extra sugar')."
+        }
+      },
+      "required": [
+        "id",
+        "orderId",
+        "productId",
+        "quantity",
+        "unitPrice"
+      ]
+    },
+    "EventBooking": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "EventBooking",
+      "type": "object",
+      "description": "Represents a customer's inquiry or booking request for Cayo Drinks services for various events, allowing tracking of the booking process.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the EventBooking entity."
+        },
+        "customerName": {
+          "type": "string",
+          "description": "The full name of the customer or organizer submitting the event booking request."
+        },
+        "customerEmail": {
+          "type": "string",
+          "description": "The email address of the customer for all event-related communication.",
+          "format": "email"
+        },
+        "customerPhoneNumber": {
+          "type": "string",
+          "description": "The phone number of the customer for event communication."
+        },
+        "eventType": {
+          "type": "string",
+          "description": "The nature of the event being planned (e.g., wedding, party, corporate event).",
+          "format": "enum",
+          "items": {
+            "type": "string"
+          }
+        },
+        "eventDate": {
+          "type": "string",
+          "description": "The scheduled date of the event.",
+          "format": "date"
+        },
+        "eventLocation": {
+          "type": "string",
+          "description": "The venue or specific address where the event will take place."
+        },
+        "numberOfGuests": {
+          "type": "number",
+          "description": "The estimated number of attendees expected at the event."
+        },
+        "budget": {
+          "type": "number",
+          "description": "The estimated budget allocated for Cayo Drinks services for the event, if provided by the customer."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the event booking request, indicating its progress (e.g., pending, confirmed).",
+          "format": "enum",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional requirements, special requests, or specific details provided by the customer for the event."
+        },
+        "submissionDate": {
+          "type": "string",
+          "description": "The date and time when the event booking request was initially submitted.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "customerName",
+        "customerEmail",
+        "eventType",
+        "eventDate",
+        "eventLocation",
+        "numberOfGuests",
+        "status",
+        "submissionDate"
+      ]
+    },
+    "GalleryImage": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "GalleryImage",
+      "type": "object",
+      "description": "Represents an image displayed in the website's photo gallery, showcasing drinks, ingredients, and events.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the GalleryImage entity."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "The URL to the image file, hosted externally or internally.",
+          "format": "uri"
+        },
+        "altText": {
+          "type": "string",
+          "description": "Alternative text for the image, crucial for accessibility and SEO."
+        },
+        "category": {
+          "type": "string",
+          "description": "The classification of the image (e.g., drinks, ingredients, customers, preparation, events).",
+          "format": "enum",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uploadDate": {
+          "type": "string",
+          "description": "The date and time when the image was uploaded to the gallery.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "imageUrl",
+        "altText",
+        "category",
+        "uploadDate"
+      ]
+    },
+    "CompanyInfo": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "CompanyInfo",
+      "type": "object",
+      "description": "Stores general information about Cayo Drinks, including contact details and social media links, primarily for the footer and contact page.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the CompanyInfo entity (typically a singleton for global settings)."
+        },
+        "companyName": {
+          "type": "string",
+          "description": "The official name of the company, 'Cayo Drinks'."
+        },
+        "address": {
+          "type": "string",
+          "description": "The physical address of the company."
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The primary contact phone number for Cayo Drinks."
+        },
+        "email": {
+          "type": "string",
+          "description": "The primary contact email address for customer inquiries.",
+          "format": "email"
+        },
+        "instagramUrl": {
+          "type": "string",
+          "description": "URL to Cayo Drinks' official Instagram profile.",
+          "format": "uri"
+        },
+        "tiktokUrl": {
+          "type": "string",
+          "description": "URL to Cayo Drinks' official TikTok profile.",
+          "format": "uri"
+        },
+        "brandMessage": {
+          "type": "string",
+          "description": "A short, impactful brand message or slogan displayed in the footer."
+        }
+      },
+      "required": [
+        "id",
+        "companyName",
+        "address",
+        "phoneNumber",
+        "email",
+        "instagramUrl",
+        "tiktokUrl",
+        "brandMessage"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/products/{productId}",
+        "definition": {
+          "entityName": "Product",
+          "schema": {
+            "$ref": "#/backend/entities/Product"
+          },
+          "description": "Collection for all beverage products offered by Cayo Drinks. Publicly readable for menu display. Admin-only for creation, updates, and deletion."
+        }
+      },
+      {
+        "path": "/users/{userId}/orders/{orderId}",
+        "definition": {
+          "entityName": "Order",
+          "schema": {
+            "$ref": "#/backend/entities/Order"
+          },
+          "description": "Collection for customer orders, secured by user ID. Each Order document MUST include an 'ownerId' field matching '{userId}' from the path, for authorization independence and simplified security rules for the tracking page. Only the owning user or an administrator can read/manage their own orders.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the customer who placed the order."
+            },
+            {
+              "name": "orderId",
+              "description": "The unique identifier for a specific order."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/orders/{orderId}/orderItems/{orderItemId}",
+        "definition": {
+          "entityName": "OrderItem",
+          "schema": {
+            "$ref": "#/backend/entities/OrderItem"
+          },
+          "description": "Subcollection containing individual items within a specific order. Each OrderItem document MUST include an 'ownerId' field matching '{userId}' from the parent path, inherited from the Order, for authorization independence. Accessible only by the owning user or an administrator.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the customer who placed the parent order."
+            },
+            {
+              "name": "orderId",
+              "description": "The unique identifier for the parent order."
+            },
+            {
+              "name": "orderItemId",
+              "description": "The unique identifier for an item within an order."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/eventBookings/{bookingId}",
+        "definition": {
+          "entityName": "EventBooking",
+          "schema": {
+            "$ref": "#/backend/entities/EventBooking"
+          },
+          "description": "Collection for customer event booking requests, secured by user ID. Each EventBooking document MUST include an 'ownerId' field matching '{userId}' from the path, for authorization independence and simplified security rules for the tracking page. Only the owning user or an administrator can read/manage their own bookings.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the customer who submitted the event booking request."
+            },
+            {
+              "name": "bookingId",
+              "description": "The unique identifier for a specific event booking."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/galleryImages/{imageId}",
+        "definition": {
+          "entityName": "GalleryImage",
+          "schema": {
+            "$ref": "#/backend/entities/GalleryImage"
+          },
+          "description": "Collection for images displayed in the website's photo gallery. Publicly readable. Admin-only for creation, updates, and deletion.",
+          "params": [
+            {
+              "name": "imageId",
+              "description": "The unique identifier for a gallery image."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/companyInfo/cayoDrinksDetails",
+        "definition": {
+          "entityName": "CompanyInfo",
+          "schema": {
+            "$ref": "#/backend/entities/CompanyInfo"
+          },
+          "description": "Singleton document storing general information about Cayo Drinks (contact, social links). Publicly readable for website display. Admin-only for updates."
+        }
+      },
+      {
+        "path": "/roles_admin/{userId}",
+        "definition": {
+          "entityName": "AdminRole",
+          "schema": {
+            "$ref": "#/backend/entities/AdminRole"
+          },
+          "description": "Collection to define administrative roles using the 'Existence over Content' pattern. A document existing here signifies that the corresponding userId has admin privileges. Used for enforcing admin-only write access to core data. Only rules should read this collection, and only backend should write to it.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of a user granted administrator privileges."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to be secure, scalable, and debuggable, adhering to all core design principles and strategy mandates. Authorization Independence is primarily achieved through a combination of **path-based ownership** and **denormalization of ownership fields**.\n\nFor `Product`, `GalleryImage`, and `CompanyInfo` entities, a simple top-level collection (`/products`, `/galleryImages`, `/companyInfo`) is used. These collections have a **public read security posture**, enabling anonymous users to browse content, and an **admin-only write posture** for management. This structural segregation ensures that public data is easily accessible and rules for these collections are straightforward: `allow read: true; allow write: if request.auth.uid in get(/roles_admin/$(request.auth.uid)).data;`.\n\nFor user-specific data, specifically `Order` and `EventBooking`, the structure leverages **hierarchical paths tied to the user's UID**. Orders are stored under `/users/{userId}/orders/{orderId}` and Event Bookings under `/users/{userId}/eventBookings/{bookingId}`. This design makes authorization extremely clear: a user can only access documents where `userId` in the path matches their `request.auth.uid`.\n\n**CRITICAL: Authorization Independence for Orders and Event Bookings (Denormalization):** To eliminate the need for `get()` calls in security rules (a core mandate), every `Order` document and every `EventBooking` document **MUST include an `ownerId` field**. This `ownerId` field will store the `userId` (i.e., `request.auth.uid`) of the customer who placed the order or submitted the booking. Similarly, `OrderItem` documents, which are subcollections of `Order`, will also include the `ownerId` field denormalized from their parent `Order`. This allows rules for these paths to simply check `request.auth.uid == userId` AND `resource.data.ownerId == request.auth.uid`, ensuring atomic operations and simplified rule logic without cross-document lookups. This also makes the 'tracking page' securely accessible to authenticated users by filtering for `request.auth.uid` directly in the path.\n\n**QAPs (Rules are not Filters) Support:** The structural segregation and path-based ownership ensure QAPs are met. For public collections (`/products`, `/galleryImages`), `list` operations are implicitly secure as all documents are public. For user-owned data (`/users/{userId}/orders`, `/users/{userId}/eventBookings`), a `list` operation at `/users/{request.auth.uid}/orders` or `/users/{request.auth.uid}/eventBookings` will securely return only the authenticated user's documents, without requiring complex filtering logic in the rules. This adheres to the principle that Firestore rules enforce access, not filter results.\n\n**DBAC and Global Roles:** Administrator roles are managed via a dedicated top-level collection `/roles_admin/{userId}`. The mere existence of a document at this path signifies that the `userId` associated with it has admin privileges. This uses the 'Existence over Content' pattern for roles, simplifying rule checks for administrative actions across the application."
+  }
+}

@@ -1,0 +1,158 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * Cayo Drinks Security Rules
+     * 
+     * CORE PHILOSOPHY:
+     * This ruleset implements a dual-layer security model designed for a beverage ordering and 
+     * event booking platform. It prioritizes public accessibility for the menu and gallery 
+     * while enforcing strict user-ownership for sensitive transactional data (orders and bookings).
+     * 
+     * DATA STRUCTURE:
+     * - Public Content: Products, Gallery Images, and Company Info are top-level and readable by all.
+     * - Private User Data: Orders and Event Bookings are organized under /users/{userId}/...
+     * - Admin Roles: Managed via the /roles_admin/{userId} collection (Existence-over-Content pattern).
+     * 
+     * KEY SECURITY DECISIONS:
+     * - Authorization Independence: User documents (Orders, Bookings) include a denormalized 
+     *   'ownerId' field. Rules validate that this field matches both the URL path and the 
+     *   authenticated user's UID to prevent "Insecure Direct Object Reference" (IDOR) attacks.
+     * - Admin Override: A global isAdmin() helper allows administrative accounts to manage all 
+     *   data, while standard users are restricted to their own data trees.
+     * - Prototyping Flexibility: While authorization is strictly enforced, specific data 
+     *   types and non-relational fields are not validated to allow for rapid frontend iteration.
+     */
+
+    // --- HELPER FUNCTIONS ---
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * Checks if the authenticated user has administrative privileges.
+     * Uses the "Existence over Content" pattern on the roles_admin collection.
+     */
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
+    }
+
+    /**
+     * Checks if the authenticated user's UID matches the provided userId.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /**
+     * Combines ownership and existence checks for updates and deletes.
+     */
+    function isExistingOwnerOrAdmin(userId) {
+      return resource != null && (isOwner(userId) || isAdmin());
+    }
+
+    // --- COLLECTION RULES ---
+
+    /**
+     * @description Collection for all beverage products offered. Publicly readable for menu display.
+     * @path /products/{productId}
+     * @allow (get) Any user viewing the menu.
+     * @deny (create) Non-admin user attempting to add a product.
+     * @principle Public read access with administrative write control.
+     */
+    match /products/{productId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Customer orders, secured by user ID and internal ownerId field.
+     * @path /users/{userId}/orders/{orderId}
+     * @allow (list) A user listing their own orders at /users/my_uid/orders.
+     * @deny (create) A user attempting to set 'ownerId' to someone else's ID.
+     * @principle Path-based ownership combined with internal relational integrity validation.
+     */
+    match /users/{userId}/orders/{orderId} {
+      allow get, list: if isOwner(userId) || isAdmin();
+      
+      // On create, ensure the ownerId in the data matches the path and the auth token
+      allow create: if (isOwner(userId) || isAdmin()) 
+                    && request.resource.data.ownerId == userId;
+      
+      // On update, ensure the document exists and the ownership link remains immutable
+      allow update: if isExistingOwnerOrAdmin(userId) 
+                    && request.resource.data.ownerId == resource.data.ownerId;
+                    
+      allow delete: if isExistingOwnerOrAdmin(userId);
+
+      /**
+       * @description Individual items within an order. Inherits ownership from the parent path.
+       * @path /users/{userId}/orders/{orderId}/orderItems/{orderItemId}
+       * @allow (create) An owner adding an item to their own order.
+       * @deny (get) A user trying to view items from another user's order.
+       * @principle Subcollection security via path-based hierarchy and denormalized ownership fields.
+       */
+      match /orderItems/{orderItemId} {
+        allow get, list: if isOwner(userId) || isAdmin();
+        allow create: if (isOwner(userId) || isAdmin()) 
+                      && request.resource.data.ownerId == userId;
+        allow update: if isExistingOwnerOrAdmin(userId) 
+                      && request.resource.data.ownerId == resource.data.ownerId;
+        allow delete: if isExistingOwnerOrAdmin(userId);
+      }
+    }
+
+    /**
+     * @description Customer event booking requests.
+     * @path /users/{userId}/eventBookings/{bookingId}
+     * @allow (get) An owner tracking their booking status.
+     * @deny (update) An owner trying to change the 'ownerId' field.
+     * @principle Enforces relational integrity between the auth state, the path, and document data.
+     */
+    match /users/{userId}/eventBookings/{bookingId} {
+      allow get, list: if isOwner(userId) || isAdmin();
+      allow create: if (isOwner(userId) || isAdmin()) 
+                    && request.resource.data.ownerId == userId;
+      allow update: if isExistingOwnerOrAdmin(userId) 
+                    && request.resource.data.ownerId == resource.data.ownerId;
+      allow delete: if isExistingOwnerOrAdmin(userId);
+    }
+
+    /**
+     * @description Photo gallery images for drinks and events.
+     * @path /galleryImages/{imageId}
+     * @allow (list) Public visitors browsing the gallery.
+     * @deny (delete) Unauthorized user attempting to remove an image.
+     * @principle Public read access with administrative write control.
+     */
+    match /galleryImages/{imageId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Singleton document for global company contact information.
+     * @path /companyInfo/cayoDrinksDetails
+     * @allow (get) Publicly accessible for the footer and contact pages.
+     * @deny (update) Non-admin user attempting to change company phone number.
+     * @principle Restricts modifications of global configuration to administrators.
+     */
+    match /companyInfo/cayoDrinksDetails {
+      allow get: if true;
+      allow list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Internal collection defining administrative roles.
+     * @path /roles_admin/{userId}
+     * @allow (none) Directly restricted. Only readable via rules 'exists' or 'get' calls.
+     * @principle Protects the source of truth for administrative privileges.
+     */
+    match /roles_admin/{userId} {
+      allow read, write: if false;
+    }
+  }
+}
