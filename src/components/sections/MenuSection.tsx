@@ -30,19 +30,19 @@ export function MenuSection() {
   const images = PlaceHolderImages;
 
   return (
-    <div id="menu" className="py-24 space-y-32">
+    <div id="menu" className="py-16 space-y-24">
       {/* Signature Fruit Drinks */}
       <section className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-          <div className="space-y-4">
-            <span className="text-primary font-bold uppercase tracking-widest text-sm">Signature Drinks</span>
-            <h2 className="text-4xl md:text-5xl font-headline font-extrabold">Fruit Drinks in <span className="text-primary">PET Cans</span></h2>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+          <div className="space-y-3">
+            <span className="text-primary font-bold uppercase tracking-widest text-xs">Signature Drinks</span>
+            <h2 className="text-3xl md:text-4xl font-headline font-extrabold">Fruit Drinks in <span className="text-primary">PET Cans</span></h2>
           </div>
-          <p className="max-w-md text-muted-foreground">
+          <p className="max-w-md text-sm text-muted-foreground">
             Our signature canned series brings you the freshest island flavors in a sleek, convenient PET can.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-5">
           {fruitDrinks.map((drink) => {
             const imgData = images.find(img => img.id === drink.id);
             return (
@@ -61,16 +61,16 @@ export function MenuSection() {
 
       {/* Cocktails */}
       <section className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-          <div className="space-y-4">
-            <span className="text-secondary font-bold uppercase tracking-widest text-sm">Crafted Mixology</span>
-            <h2 className="text-4xl md:text-5xl font-headline font-extrabold">Elegant <span className="text-secondary">Glass Cocktails</span></h2>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+          <div className="space-y-3">
+            <span className="text-secondary font-bold uppercase tracking-widest text-xs">Crafted Mixology</span>
+            <h2 className="text-3xl md:text-4xl font-headline font-extrabold">Elegant <span className="text-secondary">Glass Cocktails</span></h2>
           </div>
-          <p className="max-w-md text-muted-foreground">
+          <p className="max-w-md text-sm text-muted-foreground">
             Sip on luxury with our masterfully crafted cocktails, served in elegant glassware.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-5">
           {cocktails.map((drink) => {
             const imgData = images.find(img => img.id === drink.id);
             return (
