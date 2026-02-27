@@ -16,18 +16,24 @@ export function Gallery() {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {galleryImages.map((img, i) => (
-          <div key={i} className="relative overflow-hidden rounded-xl h-40 group cursor-pointer shadow-md">
+          <div 
+            key={i} 
+            className="relative overflow-hidden rounded-lg aspect-[4/3] group cursor-pointer shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            tabIndex={0}
+            role="img"
+            aria-label={img.description}
+          >
             <Image
               src={img.imageUrl}
               alt={img.description}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
               data-ai-hint={img.imageHint}
             />
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-              <p className="text-white text-[8px] font-medium leading-tight">{img.description}</p>
+            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <p className="text-white text-xs font-semibold leading-tight">{img.description}</p>
             </div>
           </div>
         ))}
