@@ -42,7 +42,7 @@ export function MenuSection() {
             Our signature canned series brings you the freshest island flavors in a sleek, convenient PET can.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 lg:gap-4">
           {fruitDrinks.map((drink) => {
             const imgData = images.find(img => img.id === drink.id);
             return (
@@ -70,7 +70,7 @@ export function MenuSection() {
             Sip on luxury with our masterfully crafted cocktails, served in elegant glassware.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 lg:gap-4">
           {cocktails.map((drink) => {
             const imgData = images.find(img => img.id === drink.id);
             return (
