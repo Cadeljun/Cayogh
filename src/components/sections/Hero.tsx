@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -69,7 +68,7 @@ export function Hero() {
             </Link>
             <Link href="/events">
               <Button size="lg" variant="outline" className="rounded-full px-8 text-lg font-semibold border-white/20 hover:bg-white/5 backdrop-blur-sm">
-                Book an Event
+                Book For Your Event
               </Button>
             </Link>
           </div>
