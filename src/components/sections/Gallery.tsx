@@ -16,9 +16,9 @@ export function Gallery() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {galleryImages.map((img, i) => (
-          <div key={i} className={`relative overflow-hidden rounded-3xl h-80 group cursor-pointer ${i % 3 === 0 ? 'lg:col-span-2' : ''}`}>
+          <div key={i} className="relative overflow-hidden rounded-2xl h-60 group cursor-pointer shadow-md">
             <Image
               src={img.imageUrl}
               alt={img.description}
@@ -26,8 +26,8 @@ export function Gallery() {
               className="object-cover transition-transform duration-700 group-hover:scale-110"
               data-ai-hint={img.imageHint}
             />
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-              <p className="text-white font-medium">{img.description}</p>
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <p className="text-white text-[10px] font-medium leading-tight">{img.description}</p>
             </div>
           </div>
         ))}
