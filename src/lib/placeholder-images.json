@@ -1,3 +1,88 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-drink-1",
+      "description": "Tropical fruit drink in a modern PET can",
+      "imageUrl": "https://images.unsplash.com/photo-1766085683410-3b8e7e12a88c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dHJvcGljYWwlMjBkcmlua3xlbnwwfHx8fDE3NzIyMDk5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tropical drink"
+    },
+    {
+      "id": "hero-drink-2",
+      "description": "Elegant tropical cocktail in a glass cup",
+      "imageUrl": "https://images.unsplash.com/photo-1615887023516-9b6bcd559e87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb2NrdGFpbCUyMGdsYXNzfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cocktail glass"
+    },
+    {
+      "id": "fruit-drink-1",
+      "description": "Tropical Sunset Fruit Drink",
+      "imageUrl": "https://images.unsplash.com/photo-1593623730315-858dc1c2abc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxvcmFuZ2UlMjBkcmlua3xlbnwwfHx8fDE3NzIxNzk1Mjd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "orange drink"
+    },
+    {
+      "id": "fruit-drink-2",
+      "description": "Berry Splash Fruit Drink",
+      "imageUrl": "https://images.unsplash.com/photo-1705413081012-ef1c2169a380?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiZXJyeSUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "berry drink"
+    },
+    {
+      "id": "fruit-drink-3",
+      "description": "Island Breeze Fruit Drink",
+      "imageUrl": "https://images.unsplash.com/photo-1704224700896-501220134ffe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxncmVlbiUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "green drink"
+    },
+    {
+      "id": "fruit-drink-4",
+      "description": "Citrus Rush Fruit Drink",
+      "imageUrl": "https://images.unsplash.com/photo-1598203495704-8b86abb5d266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZW1vbiUyMGRyaW5rfGVufDB8fHx8MTc3MjIwOTk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lemon drink"
+    },
+    {
+      "id": "cocktail-1",
+      "description": "Royal Sunset Cocktail",
+      "imageUrl": "https://images.unsplash.com/photo-1729719930738-2534f5e68570?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYW5jeSUyMGNvY2t0YWlsfGVufDB8fHx8MTc3MjE3Nzg0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fancy cocktail"
+    },
+    {
+      "id": "cocktail-2",
+      "description": "Velvet Martini",
+      "imageUrl": "https://images.unsplash.com/photo-1652272160614-594d88786592?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYXJ0aW5pJTIwZ2xhc3N8ZW58MHx8fHwxNzcyMjA5OTYzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "martini glass"
+    },
+    {
+      "id": "cocktail-3",
+      "description": "Classic Mojito",
+      "imageUrl": "https://images.unsplash.com/photo-1619604580082-e54fcde25493?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtb2ppdG8lMjBkcmlua3xlbnwwfHx8fDE3NzIyMDk5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mojito drink"
+    },
+    {
+      "id": "cocktail-4",
+      "description": "Midnight Passion Cocktail",
+      "imageUrl": "https://images.unsplash.com/photo-1559842438-2942c907c8fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwdXJwbGUlMjBjb2NrdGFpbHxlbnwwfHx8fDE3NzIyMDk5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "purple cocktail"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Fresh tropical fruits",
+      "imageUrl": "https://images.unsplash.com/photo-1605027990121-cbae9e0642df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0cm9waWNhbCUyMGZydWl0c3xlbnwwfHx8fDE3NzIxMTcwOTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tropical fruits"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Mixologist preparing drinks",
+      "imageUrl": "https://images.unsplash.com/photo-1628642550699-88a42a07ada9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxiYXJ0ZW5kZXIlMjBtaXhpbmd8ZW58MHx8fHwxNzcyMjA5OTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bartender mixing"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Customers enjoying drinks",
+      "imageUrl": "https://images.unsplash.com/photo-1557425396-652fab4a5818?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGFwcHklMjBwZW9wbGUlMjBkcmlua2luZ3xlbnwwfHx8fDE3NzIyMDk5NjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy people drinking"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Drink display at an event",
+      "imageUrl": "https://images.unsplash.com/photo-1625224703617-c1becc31b72c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxldmVudCUyMGJhcnxlbnwwfHx8fDE3NzIyMDk5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "event bar"
+    }
+  ]
 }

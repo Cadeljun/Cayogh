@@ -1,0 +1,89 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-drink-1",
+      "description": "Tropical fruit drink in a modern PET can",
+      "imageUrl": "https://picsum.photos/seed/cayo1/800/1000",
+      "imageHint": "tropical drink"
+    },
+    {
+      "id": "hero-drink-2",
+      "description": "Elegant tropical cocktail in a glass cup",
+      "imageUrl": "https://picsum.photos/seed/cayo2/800/1000",
+      "imageHint": "cocktail glass"
+    },
+    {
+      "id": "fruit-drink-1",
+      "description": "Tropical Sunset Fruit Drink",
+      "imageUrl": "https://picsum.photos/seed/cayo3/600/800",
+      "imageHint": "orange drink"
+    },
+    {
+      "id": "fruit-drink-2",
+      "description": "Berry Splash Fruit Drink",
+      "imageUrl": "https://picsum.photos/seed/cayo4/600/800",
+      "imageHint": "berry drink"
+    },
+    {
+      "id": "fruit-drink-3",
+      "description": "Island Breeze Fruit Drink",
+      "imageUrl": "https://picsum.photos/seed/cayo5/600/800",
+      "imageHint": "green drink"
+    },
+    {
+      "id": "fruit-drink-4",
+      "description": "Citrus Rush Fruit Drink",
+      "imageUrl": "https://picsum.photos/seed/cayo6/600/800",
+      "imageHint": "lemon drink"
+    },
+    {
+      "id": "cocktail-1",
+      "description": "Royal Sunset Cocktail",
+      "imageUrl": "https://picsum.photos/seed/cayo7/600/800",
+      "imageHint": "fancy cocktail"
+    },
+    {
+      "id": "cocktail-2",
+      "description": "Velvet Martini",
+      "imageUrl": "https://picsum.photos/seed/cayo8/600/800",
+      "imageHint": "martini glass"
+    },
+    {
+      "id": "cocktail-3",
+      "description": "Classic Mojito",
+      "imageUrl": "https://picsum.photos/seed/cayo9/600/800",
+      "imageHint": "mojito drink"
+    },
+    {
+      "id": "cocktail-4",
+      "description": "Midnight Passion Cocktail",
+      "imageUrl": "https://picsum.photos/seed/cayo10/600/800",
+      "imageHint": "purple cocktail"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Fresh tropical fruits",
+      "imageUrl": "https://picsum.photos/seed/cayo11/800/600",
+      "imageHint": "tropical fruits"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Mixologist preparing drinks",
+      "imageUrl": "https://picsum.photos/seed/cayo12/800/600",
+      "imageHint": "bartender mixing"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Customers enjoying drinks",
+      "imageUrl": "https://picsum.photos/seed/cayo13/800/600",
+      "imageHint": "happy people drinking"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Drink display at an event",
+      "imageUrl": "https://picsum.photos/seed/cayo14/800/600",
+      "imageHint": "event bar"
+    }
+  ]
+}
