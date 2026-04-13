@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -94,7 +95,7 @@ export function Hero() {
              />
           </div>
 
-          <div className="absolute -bottom-10 -right-10 bg-card/80 backdrop-blur-xl border border-white/10 p-6 rounded-2xl hidden md:block z-30 animate-bounce">
+          <Link href="/process" className="absolute -bottom-10 -right-10 bg-card/80 backdrop-blur-xl border border-white/10 p-6 rounded-2xl hidden md:block z-30 animate-bounce hover:bg-card hover:border-primary/50 transition-all cursor-pointer">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
                 <Play className="fill-primary text-primary w-5 h-5 ml-1" />
@@ -104,7 +105,7 @@ export function Hero() {
                 <p className="text-xs text-muted-foreground">Behind the mixology</p>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </section>
