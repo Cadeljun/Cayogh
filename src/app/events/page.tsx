@@ -4,6 +4,7 @@
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { EventBooking } from '@/components/sections/EventBooking';
+import { Countdown } from '@/components/sections/Countdown';
 
 export default function EventsPage() {
   return (
@@ -11,7 +12,7 @@ export default function EventsPage() {
       <Navbar />
       
       {/* Event Hero Section */}
-      <section className="relative pt-40 pb-20 overflow-hidden bg-background">
+      <section className="relative pt-40 pb-24 overflow-hidden bg-background">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-secondary/10 blur-[100px] rounded-full pointer-events-none" />
@@ -28,6 +29,8 @@ export default function EventsPage() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             The most anticipated tropical gala of the year. Join us for a night of premium cocktails, vibrant beats, and unforgettable island vibes.
           </p>
+          
+          <Countdown />
         </div>
       </section>
 
