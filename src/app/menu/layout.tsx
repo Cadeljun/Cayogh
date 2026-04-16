@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Navbar } from '@/components/layout/Navbar';
@@ -38,10 +39,10 @@ export default function MenuLayout({ children }: { children: React.ReactNode }) 
               return (
                 <Link key={link.href} href={link.href}>
                   <span className={cn(
-                    "px-6 py-2.5 rounded-full border transition-all font-bold text-sm cursor-pointer whitespace-nowrap",
+                    "px-6 py-2.5 rounded-full border transition-all duration-300 font-bold text-sm cursor-pointer whitespace-nowrap backdrop-blur-md",
                     isActive 
-                      ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20" 
-                      : "border-white/10 hover:border-primary/50 hover:bg-white/5 text-muted-foreground hover:text-foreground"
+                      ? "bg-primary/20 text-primary border-primary/50 shadow-xl shadow-primary/10" 
+                      : "bg-white/5 border-white/10 text-muted-foreground hover:bg-white/10 hover:border-primary/30 hover:text-foreground"
                   )}>
                     {link.name}
                   </span>
