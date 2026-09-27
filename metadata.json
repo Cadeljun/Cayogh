@@ -1,0 +1,5 @@
+{
+  "name": "Cayo Drinks",
+  "description": "Experience premium refreshing fruit drinks and cocktails crafted for unforgettable moments.",
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
