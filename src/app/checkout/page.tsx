@@ -1,7 +1,6 @@
-
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
@@ -13,20 +12,21 @@ import { Textarea } from '@/components/ui/textarea';
 import { useCart } from '@/context/CartContext';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle2, ArrowLeft, CreditCard, Truck, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, ArrowLeft, CreditCard, Truck, ShieldCheck, Smartphone, Lock, Sparkles } from 'lucide-react';
 import { useFirestore, useUser, useAuth } from '@/firebase';
-import { doc, collection, serverTimestamp } from 'firebase/firestore';
-import { addDocumentNonBlocking, setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
+import { collection, serverTimestamp } from 'firebase/firestore';
+import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
 
 export default function CheckoutPage() {
   const { cart, totalPrice, clearCart, cartCount } = useCart();
   const { toast } = useToast();
   const router = useRouter();
-  const { user, isUserLoading } = useUser();
+  const { user } = useUser();
   const db = useFirestore();
   const auth = useAuth();
   
+  const [paymentMethod, setPaymentMethod] = useState<'paystack' | 'delivery'>('paystack');
   const [isOrdering, setIsOrdering] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
@@ -50,19 +50,17 @@ export default function CheckoutPage() {
 
     setIsOrdering(true);
 
-    // Ensure user is signed in (at least anonymously) to save order
+    // Ensure user is signed in (at least anonymously) to record order
     let currentUserId = user?.uid;
-    if (!currentUserId) {
-      initiateAnonymousSignIn(auth);
-      // We'll wait a brief moment for the auth state to settle, 
-      // though non-blocking login usually triggers a re-render.
-      // In a real app, we might handle this transition more explicitly.
-      toast({
-        title: "Preparing Order",
-        description: "Signing you in to track your order...",
-      });
-      return; // The effect below will re-trigger if user becomes available
+    if (!currentUserId && auth) {
+      try {
+        initiateAnonymousSignIn(auth);
+      } catch (err) {
+        console.warn('Anonymous signin notice:', err);
+      }
     }
+    // Fallback ID if auth is still settling
+    currentUserId = currentUserId || `guest_${Date.now()}`;
 
     try {
       const orderData = {
@@ -72,21 +70,22 @@ export default function CheckoutPage() {
         customerPhoneNumber: formData.phone,
         deliveryAddress: formData.address,
         totalAmount: totalPrice,
-        currency: 'GH₵',
+        currency: 'GHS',
+        paymentMethod: paymentMethod === 'paystack' ? 'Paystack (Mobile Money / Card)' : 'Cash on Delivery',
+        paymentStatus: paymentMethod === 'paystack' ? 'Pending' : 'Unpaid',
         status: 'Processing',
         orderDate: new Date().toISOString(),
         createdAt: serverTimestamp(),
       };
 
-      // Create order document
+      // Create order document in Firestore
       const ordersRef = collection(db, 'users', currentUserId, 'orders');
-      const orderDocPromise = addDocumentNonBlocking(ordersRef, orderData);
-      
-      const orderRef = await orderDocPromise;
-      if (orderRef) {
-        setOrderId(orderRef.id);
+      const orderRef = await addDocumentNonBlocking(ordersRef, orderData);
+      const createdOrderId = orderRef?.id || `order_${Date.now()}`;
+      setOrderId(createdOrderId);
 
-        // Add order items
+      // Add order items
+      if (orderRef) {
         const itemsRef = collection(db, 'users', currentUserId, 'orders', orderRef.id, 'orderItems');
         cart.forEach(item => {
           addDocumentNonBlocking(itemsRef, {
@@ -98,29 +97,62 @@ export default function CheckoutPage() {
             unitPrice: item.price
           });
         });
-
-        setIsSuccess(true);
-        clearCart();
-        toast({
-          title: "Order Placed Successfully!",
-          description: "Your tropical refreshers are on their way.",
-        });
       }
-    } catch (error) {
+
+      // If user selected Paystack, initialize transaction and redirect to Paystack
+      if (paymentMethod === 'paystack') {
+        const callbackUrl = `${window.location.origin}/checkout/verify`;
+
+        const initRes = await fetch('/api/payments/paystack/initialize', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: formData.email,
+            amount: totalPrice,
+            callbackUrl,
+            metadata: {
+              orderId: createdOrderId,
+              ownerId: currentUserId,
+              customerName: `${formData.firstName} ${formData.lastName}`,
+              phone: formData.phone,
+              address: formData.address,
+              itemsCount: cart.length,
+            },
+          }),
+        });
+
+        const initData = await initRes.json();
+
+        if (initData.success && initData.authorizationUrl) {
+          // Redirect to Paystack secure checkout
+          window.location.href = initData.authorizationUrl;
+          return;
+        } else {
+          throw new Error(initData.error || 'Failed to initialize Paystack payment');
+        }
+      }
+
+      // If Cash on Delivery, mark success immediately
+      setIsSuccess(true);
+      clearCart();
+      toast({
+        title: "Order Placed Successfully!",
+        description: "Your tropical refreshers are being prepared.",
+      });
+    } catch (error: any) {
       console.error("Error placing order:", error);
       toast({
         variant: "destructive",
         title: "Order Failed",
-        description: "There was a problem placing your order. Please try again.",
+        description: error.message || "There was a problem processing your request. Please try again.",
       });
-    } finally {
       setIsOrdering(false);
     }
   };
 
   if (isSuccess) {
     return (
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-background">
         <Navbar />
         <div className="pt-40 pb-24 max-w-xl mx-auto px-6 text-center space-y-8">
           <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
@@ -136,6 +168,10 @@ export default function CheckoutPage() {
             <div className="flex justify-between">
               <span className="text-muted-foreground">Order Status:</span>
               <span className="text-primary font-bold">Processing</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Payment Method:</span>
+              <span className="font-bold">Pay on Delivery</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Estimated Delivery:</span>
@@ -162,7 +198,7 @@ export default function CheckoutPage() {
 
   if (cartCount === 0) {
     return (
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-background">
         <Navbar />
         <div className="pt-40 pb-24 max-w-xl mx-auto px-6 text-center space-y-8">
            <h1 className="text-4xl font-headline font-extrabold">Your Cart is <span className="text-primary">Empty</span></h1>
@@ -177,7 +213,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-background">
       <Navbar />
       <div className="pt-32 pb-24 max-w-7xl mx-auto px-6 lg:px-12">
         <Link href="/cart" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-12">
@@ -189,7 +225,7 @@ export default function CheckoutPage() {
           <div className="space-y-12">
             <div className="space-y-2">
               <h1 className="text-5xl font-headline font-extrabold">Checkout</h1>
-              <p className="text-muted-foreground text-lg">Complete your order details below.</p>
+              <p className="text-muted-foreground text-lg">Complete your order and payment details below.</p>
             </div>
 
             <form onSubmit={handlePlaceOrder} className="space-y-8">
@@ -212,27 +248,74 @@ export default function CheckoutPage() {
                   <Input id="email" type="email" placeholder="john@example.com" required className="bg-card border-white/5 h-12" value={formData.email} onChange={handleInputChange} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="+233 555 000 000" required className="bg-card border-white/5 h-12" value={formData.phone} onChange={handleInputChange} />
+                  <Label htmlFor="phone">Phone Number (MTN / Telecel / AT)</Label>
+                  <Input id="phone" type="tel" placeholder="+233 55 941 2097" required className="bg-card border-white/5 h-12" value={formData.phone} onChange={handleInputChange} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="address">Delivery Address</Label>
-                  <Textarea id="address" placeholder="e.g. 123 Tropical Way, East Legon, Accra" required className="bg-card border-white/5 min-h-[100px]" value={formData.address} onChange={handleInputChange} />
+                  <Textarea id="address" placeholder="e.g. East Legon, Accra, Ghana" required className="bg-card border-white/5 min-h-[100px]" value={formData.address} onChange={handleInputChange} />
                 </div>
               </div>
 
+              {/* Payment Method Selector */}
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold flex items-center gap-3">
                   <CreditCard className="text-primary" /> Payment Method
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-primary/10 border-2 border-primary p-4 rounded-2xl flex items-center gap-4 cursor-pointer">
-                    <div className="w-4 h-4 rounded-full border-4 border-primary bg-background" />
-                    <span className="font-bold">Pay on Delivery</span>
+                <div className="grid grid-cols-1 gap-4">
+                  {/* Paystack Option */}
+                  <div
+                    onClick={() => setPaymentMethod('paystack')}
+                    className={`p-5 rounded-2xl border-2 transition-all cursor-pointer flex items-start gap-4 ${
+                      paymentMethod === 'paystack'
+                        ? 'border-primary bg-primary/10 shadow-lg shadow-primary/5'
+                        : 'border-white/5 bg-card hover:border-white/10'
+                    }`}
+                  >
+                    <div className="mt-1">
+                      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                        paymentMethod === 'paystack' ? 'border-primary' : 'border-white/20'
+                      }`}>
+                        {paymentMethod === 'paystack' && <div className="w-2.5 h-2.5 rounded-full bg-primary" />}
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-1">
+                      <div className="flex items-center justify-between flex-wrap gap-2">
+                        <span className="font-bold text-base flex items-center gap-2">
+                          Paystack Live <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">Instant</span>
+                        </span>
+                        <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono">
+                          <Lock className="w-3.5 h-3.5 text-primary" /> 256-bit Secure
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Pay with <strong>MTN Mobile Money</strong>, <strong>Telecel Cash</strong>, <strong>AT Money</strong>, or <strong>Visa / Mastercard</strong>.
+                      </p>
+                    </div>
                   </div>
-                  <div className="bg-card border border-white/5 p-4 rounded-2xl flex items-center gap-4 opacity-50 cursor-not-allowed">
-                    <div className="w-4 h-4 rounded-full border border-white/20 bg-transparent" />
-                    <span className="font-bold">Mobile Money (Coming Soon)</span>
+
+                  {/* Cash on Delivery Option */}
+                  <div
+                    onClick={() => setPaymentMethod('delivery')}
+                    className={`p-5 rounded-2xl border-2 transition-all cursor-pointer flex items-start gap-4 ${
+                      paymentMethod === 'delivery'
+                        ? 'border-primary bg-primary/10 shadow-lg shadow-primary/5'
+                        : 'border-white/5 bg-card hover:border-white/10'
+                    }`}
+                  >
+                    <div className="mt-1">
+                      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                        paymentMethod === 'delivery' ? 'border-primary' : 'border-white/20'
+                      }`}>
+                        {paymentMethod === 'delivery' && <div className="w-2.5 h-2.5 rounded-full bg-primary" />}
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-1">
+                      <span className="font-bold text-base block">Pay on Delivery</span>
+                      <p className="text-xs text-muted-foreground">
+                        Pay cash or mobile money transfer to the courier upon delivery.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -240,9 +323,21 @@ export default function CheckoutPage() {
               <Button 
                 type="submit" 
                 disabled={isOrdering}
-                className="w-full h-16 bg-primary text-primary-foreground hover:bg-primary/90 text-xl font-bold rounded-2xl shadow-xl shadow-primary/20 mt-8"
+                className="w-full h-16 bg-primary text-primary-foreground hover:bg-primary/90 text-xl font-bold rounded-2xl shadow-xl shadow-primary/20 mt-8 gap-2"
               >
-                {isOrdering ? "Processing Order..." : `Place Order - GH₵${totalPrice.toFixed(2)}`}
+                {isOrdering ? (
+                  <>
+                    <Sparkles className="w-5 h-5 animate-spin" />
+                    Connecting to Paystack...
+                  </>
+                ) : paymentMethod === 'paystack' ? (
+                  <>
+                    <CreditCard className="w-5 h-5" />
+                    Pay GH₵{totalPrice.toFixed(2)} with Paystack
+                  </>
+                ) : (
+                  `Place Order - GH₵${totalPrice.toFixed(2)}`
+                )}
               </Button>
             </form>
           </div>
@@ -283,7 +378,7 @@ export default function CheckoutPage() {
 
               <div className="bg-white/5 p-4 rounded-xl flex items-center gap-3 text-xs text-muted-foreground">
                 <ShieldCheck className="w-5 h-5 text-primary shrink-0" />
-                <p>Your delivery is protected by Cayo Drinks 100% freshness guarantee. If you're not happy, we'll replace it instantly.</p>
+                <p>Your payment and delivery are protected by Cayo Drinks 100% satisfaction guarantee.</p>
               </div>
             </div>
           </div>

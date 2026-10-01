@@ -34,6 +34,7 @@ export function Hero() {
             fill
             className="object-cover"
             priority
+            referrerPolicy="no-referrer"
             data-ai-hint={heroBg.imageHint}
           />
           {/* Enhanced Dark Gradient Overlays for Visibility & Readability */}
@@ -48,10 +49,6 @@ export function Hero() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-20">
         <div className="space-y-8 text-center lg:text-left relative py-12">
-          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-sm font-medium text-primary backdrop-blur-sm">
-            <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-            Vibrant & Refreshing
-          </div>
           <h1 className="text-5xl md:text-7xl font-headline font-extrabold leading-[1.1] tracking-tight">
             Experience <br />
             <span className="text-primary">Premium Drinks</span> <br />
@@ -82,6 +79,7 @@ export function Hero() {
                 alt={img1.description}
                 fill
                 className="object-cover"
+                referrerPolicy="no-referrer"
                 data-ai-hint={img1.imageHint}
              />
           </div>
@@ -91,6 +89,7 @@ export function Hero() {
                 alt={img2.description}
                 fill
                 className="object-cover opacity-80"
+                referrerPolicy="no-referrer"
                 data-ai-hint={img2.imageHint}
              />
           </div>

@@ -2,189 +2,201 @@
   "placeholderImages": [
     {
       "id": "hero-drink-1",
-      "description": "Premium Cayo Tropical Refreshment",
-      "imageUrl": "https://i.imgur.com/2KwhSeH.png",
-      "imageHint": "tropical drink"
+      "description": "Authentic Cayo Drinks Fresh Selection",
+      "imageUrl": "https://res.cloudinary.com/dmd5bq3va/image/upload/v1784803014/cayo-website/drinks-closeup.jpg",
+      "imageHint": "cayo drinks cans and glasses"
     },
     {
       "id": "hero-drink-2",
-      "description": "Elegant tropical cocktail in a glass cup",
-      "imageUrl": "https://i.imgur.com/BqusWM7.png",
-      "imageHint": "cocktail glass"
+      "description": "Refreshing Cayo Tropical Cup",
+      "imageUrl": "https://res.cloudinary.com/dmd5bq3va/image/upload/v1784803015/cayo-website/customer-cup.jpg",
+      "imageHint": "customer holding drink"
     },
     {
       "id": "hero-bg",
-      "description": "Hero Background Texture",
-      "imageUrl": "https://i.imgur.com/BqusWM7.png",
-      "imageHint": "tropical leaves"
+      "description": "Cayo Drinks Brand Hero Background",
+      "imageUrl": "https://res.cloudinary.com/dmd5bq3va/image/upload/v1784803009/cayo-website/hero.jpg",
+      "imageHint": "cayo bar setup"
     },
     {
       "id": "fruit-drink-1",
       "description": "Tropical Sunset Fruit Drink",
-      "imageUrl": "https://i.imgur.com/jvG43RH.png",
-      "imageHint": "orange drink"
+      "imageUrl": "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "orange sunset tropical drink"
     },
     {
       "id": "fruit-drink-2",
       "description": "Berry Splash Fruit Drink",
-      "imageUrl": "https://i.imgur.com/X0zxfCS.png",
-      "imageHint": "berry drink"
+      "imageUrl": "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "berry iced drink"
     },
     {
       "id": "fruit-drink-3",
       "description": "Island Breeze Fruit Drink",
-      "imageUrl": "https://i.imgur.com/t55eEnj.png",
-      "imageHint": "green drink"
+      "imageUrl": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "coconut lime mint drink"
     },
     {
       "id": "fruit-drink-4",
       "description": "Citrus Rush Fruit Drink",
-      "imageUrl": "https://i.imgur.com/GpTbSTf.png",
-      "imageHint": "lemon drink"
+      "imageUrl": "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "citrus orange drink"
     },
     {
       "id": "fruit-drink-5",
       "description": "Mango Tango Fruit Drink",
-      "imageUrl": "https://i.imgur.com/HGSwz9f.png",
-      "imageHint": "mango drink"
+      "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "mango tropical drink"
     },
     {
       "id": "fruit-drink-6",
       "description": "Pineapple Punch Fruit Drink",
-      "imageUrl": "https://i.imgur.com/Go6kzBj.png",
-      "imageHint": "pineapple drink"
+      "imageUrl": "https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "pineapple beverage"
     },
     {
       "id": "fruit-drink-7",
       "description": "Watermelon Wave Fruit Drink",
-      "imageUrl": "https://i.imgur.com/jvG43RH.png",
-      "imageHint": "watermelon drink"
+      "imageUrl": "https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "watermelon fresh juice"
     },
     {
       "id": "fruit-drink-8",
       "description": "Guava Glow Fruit Drink",
-      "imageUrl": "https://i.imgur.com/Go6kzBj.png",
-      "imageHint": "guava drink"
+      "imageUrl": "https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "pink guava tropical drink"
     },
     {
       "id": "cocktail-1",
       "description": "Royal Sunset Cocktail",
-      "imageUrl": "https://i.imgur.com/Go6kzBj.png",
-      "imageHint": "fancy cocktail"
+      "imageUrl": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "fancy royal cocktail"
     },
     {
       "id": "cocktail-2",
       "description": "Velvet Martini",
-      "imageUrl": "https://i.imgur.com/GpTbSTf.png",
-      "imageHint": "martini glass"
+      "imageUrl": "https://images.unsplash.com/photo-1575023782549-62ca0d244b39?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "martini coupe glass"
     },
     {
       "id": "cocktail-3",
       "description": "Classic Mojito",
-      "imageUrl": "https://i.imgur.com/8q8O1Td.png",
-      "imageHint": "mojito drink"
+      "imageUrl": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "mojito drink with lime and mint"
     },
     {
       "id": "cocktail-4",
       "description": "Midnight Passion Cocktail",
-      "imageUrl": "https://i.imgur.com/jvG43RH.png",
-      "imageHint": "purple cocktail"
+      "imageUrl": "https://images.unsplash.com/photo-1560512823-829485b8bf24?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "dark moody cocktail"
     },
     {
       "id": "cocktail-5",
       "description": "Island Mule Cocktail",
-      "imageUrl": "https://i.imgur.com/t55eEnj.png",
-      "imageHint": "copper mug"
+      "imageUrl": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "copper mule mug"
     },
     {
       "id": "cocktail-6",
       "description": "Cayo Colada",
-      "imageUrl": "https://i.imgur.com/X0zxfCS.png",
-      "imageHint": "coconut drink"
+      "imageUrl": "https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "creamy pina colada"
     },
     {
       "id": "cocktail-7",
       "description": "Tropical Gin Fizz",
-      "imageUrl": "https://i.imgur.com/HGSwz9f.png",
-      "imageHint": "fizz drink"
+      "imageUrl": "https://images.unsplash.com/photo-1560526860-1f0e56046c85?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "gin fizz botanical drink"
     },
     {
       "id": "cocktail-8",
       "description": "Zesty Margarita",
-      "imageUrl": "https://i.imgur.com/Go6kzBj.png",
-      "imageHint": "margarita glass"
+      "imageUrl": "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "margarita glass with rim"
     },
     {
       "id": "shake-1",
       "description": "Vanilla Island Shake",
-      "imageUrl": "https://i.imgur.com/X0zxfCS.png",
+      "imageUrl": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
       "imageHint": "vanilla shake"
     },
     {
       "id": "shake-2",
       "description": "Choco-Coco Shake",
-      "imageUrl": "https://i.imgur.com/WA4cY02.png",
-      "imageHint": "chocolate shake"
+      "imageUrl": "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "chocolate milkshake"
     },
     {
       "id": "shake-3",
       "description": "Strawberry Dream Shake",
-      "imageUrl": "https://i.imgur.com/Vn7lpVh.png",
+      "imageUrl": "https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=800&q=80",
       "imageHint": "strawberry shake"
     },
     {
       "id": "shake-4",
       "description": "Mango Cream Shake",
-      "imageUrl": "https://i.imgur.com/Go6kzBj.png",
-      "imageHint": "mango shake"
+      "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "mango cream shake"
     },
     {
       "id": "smoothie-1",
       "description": "Green Oasis Smoothie",
-      "imageUrl": "https://i.imgur.com/Vn7lpVh.png",
-      "imageHint": "green smoothie"
+      "imageUrl": "https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "green spinach smoothie"
     },
     {
       "id": "smoothie-2",
       "description": "Purple Power Smoothie",
-      "imageUrl": "https://i.imgur.com/jvG43RH.png",
+      "imageUrl": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=800&q=80",
       "imageHint": "berry smoothie"
     },
     {
       "id": "smoothie-3",
       "description": "Golden Glow Smoothie",
-      "imageUrl": "https://i.imgur.com/GpTbSTf.png",
-      "imageHint": "mango smoothie"
+      "imageUrl": "https://images.unsplash.com/photo-1502741224143-90386d7f8c82?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "mango pineapple smoothie"
     },
     {
       "id": "smoothie-4",
       "description": "Nutty Tropical Smoothie",
-      "imageUrl": "https://i.imgur.com/WA4cY02.png",
-      "imageHint": "banana smoothie"
+      "imageUrl": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=800&q=80",
+      "imageHint": "banana oat smoothie"
     },
     {
       "id": "gallery-1",
-      "description": "Fresh tropical fruits",
-      "imageUrl": "https://i.imgur.com/7fOMSyX.png",
-      "imageHint": "tropical fruits"
+      "description": "Signature Cayo Drinks Fresh Lineup",
+      "imageUrl": "https://res.cloudinary.com/dmd5bq3va/image/upload/v1784803014/cayo-website/drinks-closeup.jpg",
+      "imageHint": "cayo drinks cans and glasses"
     },
     {
       "id": "gallery-2",
-      "description": "Mixologist preparing drinks",
-      "imageUrl": "https://i.imgur.com/3mpN2hy.png",
-      "imageHint": "bartender mixing"
+      "description": "Cayo Drinks Event Experience Stand",
+      "imageUrl": "https://res.cloudinary.com/dmd5bq3va/image/upload/v1784803012/cayo-website/setup-stand.jpg",
+      "imageHint": "event bar setup"
     },
     {
       "id": "gallery-3",
-      "description": "Customers enjoying drinks",
-      "imageUrl": "https://i.imgur.com/02Ovmce.png",
-      "imageHint": "happy people drinking"
+      "description": "Festive Atmosphere & Thriving Guests",
+      "imageUrl": "https://res.cloudinary.com/dmd5bq3va/image/upload/v1784803013/cayo-website/setup-crowd.jpg",
+      "imageHint": "crowd enjoying drinks"
     },
     {
       "id": "gallery-4",
-      "description": "Drink display at an event",
-      "imageUrl": "https://i.imgur.com/OmFVy2p.png",
-      "imageHint": "event bar"
+      "description": "Signature Fresh Cayo Canned Drink",
+      "imageUrl": "https://res.cloudinary.com/dmd5bq3va/image/upload/v1784803015/cayo-website/customer-cup.jpg",
+      "imageHint": "cayo drink in customer hand"
+    },
+    {
+      "id": "gallery-5",
+      "description": "Mobile Cayo Refreshment Station",
+      "imageUrl": "https://res.cloudinary.com/dmd5bq3va/image/upload/v1784803017/brand/cart-mockup.jpg",
+      "imageHint": "mobile drink cart"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Exclusive Cayo VIP Lounge Tent",
+      "imageUrl": "https://res.cloudinary.com/dmd5bq3va/image/upload/v1784803016/brand/tent-mockup.jpg",
+      "imageHint": "branded canopy lounge"
     }
   ]
 }

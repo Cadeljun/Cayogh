@@ -42,6 +42,7 @@ export function DrinkCard({ id, name, price, image, imageHint, description }: Dr
             alt={name}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-110"
+            referrerPolicy="no-referrer"
             data-ai-hint={imageHint}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-40" />

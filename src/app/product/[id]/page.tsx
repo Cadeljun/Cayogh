@@ -53,6 +53,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               alt={drink.name}
               fill
               className="object-cover"
+              referrerPolicy="no-referrer"
               data-ai-hint={imgData?.imageHint || 'drink'}
             />
             <div className="absolute top-6 left-6">

@@ -2,7 +2,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Instagram, Twitter, Mail, MapPin, Phone } from 'lucide-react';
+import { Instagram, Facebook, MessageCircle, Mail, MapPin, Phone, Video } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -18,16 +18,43 @@ export function Footer() {
             <p className="text-muted-foreground leading-relaxed">
               Premium tropical beverages crafted for unforgettable moments. We bring the island to you, one sip at a time.
             </p>
-            <div className="flex items-center gap-4">
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all">
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.instagram.com/_cayodrinks/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Instagram: @_cayodrinks"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all"
+              >
                 <Instagram className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all">
-                <Twitter className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all">
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .8.11V9.4a6.33 6.33 0 0 0-1 .14A6.34 6.34 0 0 0 9 22a6.35 6.35 0 0 0 6.14-4.8l.05-9.33a8.13 8.13 0 0 0 4.4 1.32V6.69z"/></svg>
-              </Link>
+              </a>
+              <a
+                href="https://www.tiktok.com/@cayodrinks"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="TikTok: @cayodrinks"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all"
+              >
+                <Video className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/cayodrinks"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Facebook: Cayo Drinks"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="https://wa.me/233559412097"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="WhatsApp: +233 559 412 097"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500/20 hover:text-emerald-400 transition-all"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -38,6 +65,7 @@ export function Footer() {
               <li><Link href="/menu" className="text-muted-foreground hover:text-primary transition-colors">Menu</Link></li>
               <li><Link href="/events" className="text-muted-foreground hover:text-primary transition-colors">Events</Link></li>
               <li><Link href="/gallery" className="text-muted-foreground hover:text-primary transition-colors">Gallery</Link></li>
+              <li><Link href="/process" className="text-muted-foreground hover:text-primary transition-colors">Behind the Mixology</Link></li>
             </ul>
           </div>
 
@@ -46,15 +74,21 @@ export function Footer() {
             <ul className="space-y-4 text-muted-foreground">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
-                <span>123 Tropical Way, Accra, Ghana</span>
+                <span>Accra, Ghana</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span>+233 (0) 555 123 456</span>
+                <a href="tel:+233559412097" className="hover:text-primary transition-colors">+233 (0) 559 412 097</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <MessageCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+                <a href="https://wa.me/233559412097" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
+                  WhatsApp: +233 559 412 097
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <span>hello@cayodrinks.com</span>
+                <a href="mailto:cayodrinks@gmail.com" className="hover:text-primary transition-colors">cayodrinks@gmail.com</a>
               </li>
             </ul>
           </div>
