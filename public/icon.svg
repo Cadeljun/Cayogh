@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="cayoBg" x1="10%" y1="10%" x2="90%" y2="90%">
+      <stop offset="0%" stop-color="#FF6A28" />
+      <stop offset="55%" stop-color="#FF4B1F" />
+      <stop offset="100%" stop-color="#DE1D3E" />
+    </linearGradient>
+
+    <!-- Warm Golden Sun Glow -->
+    <radialGradient id="sunGlow" cx="45%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </radialGradient>
+
+    <!-- Fresh Tropical Leaf Gradient -->
+    <linearGradient id="leafGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="50%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#6EE7B7" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="cayoShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+
+    <!-- Subtle Bevel / Glass Shine -->
+    <linearGradient id="glassLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.28" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.22" />
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle Silhouette -->
+  <rect x="20" y="20" width="472" height="472" rx="128" fill="url(#cayoBg)" filter="url(#cayoShadow)" />
+  <rect x="20" y="20" width="472" height="472" rx="128" fill="url(#glassLight)" />
+  <rect x="22" y="22" width="468" height="468" rx="126" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-opacity="0.25" />
+
+  <!-- Tropical Sun Disc -->
+  <circle cx="318" cy="204" r="70" fill="url(#sunGlow)" />
+
+  <!-- Bold Modern C Monogram -->
+  <path d="M 375,148 
+           C 320,95 195,95 138,162 
+           C 80,230 80,314 138,382 
+           C 195,448 320,448 380,390 
+           C 392,378 376,360 362,372 
+           C 314,418 214,418 168,364 
+           C 122,310 122,234 168,180 
+           C 214,126 314,126 358,168 
+           C 372,180 388,160 375,148 Z" 
+        fill="#FFFFFF" />
+
+  <!-- Sleek Tropical Botanical Frond Leaf -->
+  <path d="M 172,328 
+           C 208,280 265,238 356,212 
+           C 326,252 288,304 226,344 
+           C 204,354 186,348 172,328 Z" 
+        fill="url(#leafGrad)" />
+
+  <!-- Leaf Center Spine -->
+  <path d="M 182,332 C 242,288 306,244 354,214" 
+        stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-opacity="0.75" fill="none" />
+
+  <!-- Dewdrop Reflection -->
+  <path d="M 346,295 C 346,295 368,326 368,338 C 368,351 358,360 346,360 C 334,360 324,351 324,338 C 324,326 346,295 346,295 Z" 
+        fill="#FFFFFF" fill-opacity="0.95" />
+</svg>
